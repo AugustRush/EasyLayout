@@ -1,5 +1,5 @@
 //
-//  ELLayoutConstraint.m
+//  ELLayoutConstraintModel.m
 //  EasyLayoutDemo
 //
 //  Created by AugustRush on 1/9/16.
@@ -7,9 +7,9 @@
 //
 
 #import "ELConstraintsMaker.h"
-#import "ELLayoutConstraint.h"
+#import "ELLayoutConstraintModel.h"
 
-@implementation ELLayoutConstraint
+@implementation ELLayoutConstraintModel
 
 - (instancetype)init {
   self = [super init];
@@ -52,7 +52,7 @@
 #pragma mark - public methods
 
 - (ELLayoutLinkerBlock)equalTo {
-  return ^ELLayoutConstraint *(id viewOrNumber) {
+  return ^ELLayoutConstraintModel *(id viewOrNumber) {
     [self configurationWithViewOrNumber:viewOrNumber
                                relation:NSLayoutRelationEqual];
     return self;
@@ -60,7 +60,7 @@
 }
 
 - (ELLayoutLinkerBlock)greaterThanOrEqualTo {
-  return ^ELLayoutConstraint *(id viewOrNumber) {
+  return ^ELLayoutConstraintModel *(id viewOrNumber) {
     [self configurationWithViewOrNumber:viewOrNumber
                                relation:NSLayoutRelationGreaterThanOrEqual];
 
@@ -69,7 +69,7 @@
 }
 
 - (ELLayoutLinkerBlock)lessThanOrEqualTo {
-  return ^ELLayoutConstraint *(id viewOrNumber) {
+  return ^ELLayoutConstraintModel *(id viewOrNumber) {
     [self configurationWithViewOrNumber:viewOrNumber
                                relation:NSLayoutRelationLessThanOrEqual];
     return self;
@@ -88,10 +88,6 @@
     _constant += offset;
     return self;
   };
-}
-
-- (BOOL)isEqual:(id)object {
-    return NO;
 }
 
 - (void)dealloc {

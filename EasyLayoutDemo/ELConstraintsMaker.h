@@ -6,19 +6,19 @@
 //  Copyright © 2016 AugustRush. All rights reserved.
 //
 
-#import "ELLayoutConstraint.h"
+#import "ELLayoutConstraintModel.h"
 #import <UIKit/UIKit.h>
 
 @interface ELConstraintsMaker : NSObject
 
-@property(nonatomic, readonly) ELLayoutConstraint *EL_left;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_right;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_top;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_bottom;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_centerX;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_centerY;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_width;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_height;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_left;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_right;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_top;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_bottom;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerX;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerY;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_width;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_height;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithView:(UIView *)view;

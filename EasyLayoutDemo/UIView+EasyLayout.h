@@ -7,19 +7,19 @@
 //
 
 #import "ELConstraintsMaker.h"
-#import "ELLayoutConstraint.h"
+#import "ELLayoutConstraintModel.h"
 #import <UIKit/UIKit.h>
 
 @interface UIView (EasyLayout)
 
-@property(nonatomic, readonly) ELLayoutConstraint *EL_left;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_right;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_top;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_bottom;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_centerX;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_centerY;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_width;
-@property(nonatomic, readonly) ELLayoutConstraint *EL_height;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_left;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_right;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_top;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_bottom;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerX;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerY;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_width;
+@property(nonatomic, readonly) ELLayoutConstraintModel *EL_height;
 
 - (void)ELContraintsMake:(void (^)(ELConstraintsMaker *make))block;
 - (void)ELContraintsRemake:(void (^)(ELConstraintsMaker *make))block;

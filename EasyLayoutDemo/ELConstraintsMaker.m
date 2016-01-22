@@ -12,7 +12,7 @@
 
 @implementation ELConstraintsMaker {
   __weak UIView *_view;
-  NSHashTable<ELLayoutConstraint *> *_models;
+  NSHashTable<ELLayoutConstraintModel *> *_models;
   NSHashTable<NSLayoutConstraint *> *_constraints;
 }
 
@@ -35,17 +35,17 @@
 #pragma mark - private methods
 
 - (void)install {
-  for (ELLayoutConstraint *constraint in _models) {
-    NSLayoutConstraint *con =
-        [NSLayoutConstraint constraintWithItem:constraint.view
-                                     attribute:constraint.attribute
-                                     relatedBy:constraint.relation
-                                        toItem:constraint.toView
-                                     attribute:constraint.toAttribute
-                                    multiplier:constraint.ratio
-                                      constant:constraint.constant];
-    [con setActive:YES];
-    [_constraints addObject:con];
+  for (ELLayoutConstraintModel *model in _models) {
+    NSLayoutConstraint *constraint =
+        [NSLayoutConstraint constraintWithItem:model.view
+                                     attribute:model.attribute
+                                     relatedBy:model.relation
+                                        toItem:model.toView
+                                     attribute:model.toAttribute
+                                    multiplier:model.ratio
+                                      constant:model.constant];
+    [constraint setActive:YES];
+    [_constraints addObject:constraint];
   }
 }
 
@@ -56,50 +56,50 @@
 
 #pragma mark - properties methods
 
-- (ELLayoutConstraint *)EL_left {
-  ELLayoutConstraint *constraint = _view.EL_left;
+- (ELLayoutConstraintModel *)EL_left {
+  ELLayoutConstraintModel *constraint = _view.EL_left;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_right {
-  ELLayoutConstraint *constraint = _view.EL_right;
+- (ELLayoutConstraintModel *)EL_right {
+  ELLayoutConstraintModel *constraint = _view.EL_right;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_top {
-  ELLayoutConstraint *constraint = _view.EL_top;
+- (ELLayoutConstraintModel *)EL_top {
+  ELLayoutConstraintModel *constraint = _view.EL_top;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_bottom {
-  ELLayoutConstraint *constraint = _view.EL_bottom;
+- (ELLayoutConstraintModel *)EL_bottom {
+  ELLayoutConstraintModel *constraint = _view.EL_bottom;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_centerX {
-  ELLayoutConstraint *constraint = _view.EL_centerX;
+- (ELLayoutConstraintModel *)EL_centerX {
+  ELLayoutConstraintModel *constraint = _view.EL_centerX;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_centerY {
-  ELLayoutConstraint *constraint = _view.EL_centerY;
+- (ELLayoutConstraintModel *)EL_centerY {
+  ELLayoutConstraintModel *constraint = _view.EL_centerY;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_width {
-  ELLayoutConstraint *constraint = _view.EL_width;
+- (ELLayoutConstraintModel *)EL_width {
+  ELLayoutConstraintModel *constraint = _view.EL_width;
   [_models addObject:constraint];
   return constraint;
 }
 
-- (ELLayoutConstraint *)EL_height {
-  ELLayoutConstraint *constraint = _view.EL_height;
+- (ELLayoutConstraintModel *)EL_height {
+  ELLayoutConstraintModel *constraint = _view.EL_height;
   [_models addObject:constraint];
   return constraint;
 }

@@ -1,5 +1,5 @@
 //
-//  ELLayoutConstraint.h
+//  ELLayoutConstraintModel.h
 //  EasyLayoutDemo
 //
 //  Created by AugustRush on 1/9/16.
@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class ELLayoutConstraint;
+@class ELLayoutConstraintModel;
 
-typedef ELLayoutConstraint * (^ELLayoutOffsetBlock)(CGFloat offset);
+typedef ELLayoutConstraintModel * (^ELLayoutOffsetBlock)(CGFloat offset);
 typedef ELLayoutOffsetBlock ELLayoutMultiplierBlock;
-typedef ELLayoutConstraint * (^ELLayoutLinkerBlock)(id viewOrNumber);
+typedef ELLayoutConstraintModel * (^ELLayoutLinkerBlock)(id viewOrNumber);
 
-@interface ELLayoutConstraint : NSObject
+@interface ELLayoutConstraintModel : NSObject
 
 @property (nonatomic, weak) UIView *view;
 @property (nonatomic, weak) UIView *toView;

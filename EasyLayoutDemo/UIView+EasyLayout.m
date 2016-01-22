@@ -13,40 +13,40 @@
 
 #pragma mark - properties
 
-- (ELLayoutConstraint *)EL_left {
+- (ELLayoutConstraintModel *)EL_left {
   return [self constraintWithAttribute:NSLayoutAttributeLeft];
 }
 
-- (ELLayoutConstraint *)EL_right {
+- (ELLayoutConstraintModel *)EL_right {
   return [self constraintWithAttribute:NSLayoutAttributeRight];
 }
 
-- (ELLayoutConstraint *)EL_top {
+- (ELLayoutConstraintModel *)EL_top {
   return [self constraintWithAttribute:NSLayoutAttributeTop];
 }
 
-- (ELLayoutConstraint *)EL_bottom {
+- (ELLayoutConstraintModel *)EL_bottom {
   return [self constraintWithAttribute:NSLayoutAttributeBottom];
 }
 
-- (ELLayoutConstraint *)EL_centerX {
+- (ELLayoutConstraintModel *)EL_centerX {
   return [self constraintWithAttribute:NSLayoutAttributeCenterX];
 }
 
-- (ELLayoutConstraint *)EL_centerY {
+- (ELLayoutConstraintModel *)EL_centerY {
   return [self constraintWithAttribute:NSLayoutAttributeCenterY];
 }
 
-- (ELLayoutConstraint *)EL_width {
+- (ELLayoutConstraintModel *)EL_width {
   return [self constraintWithAttribute:NSLayoutAttributeWidth];
 }
 
-- (ELLayoutConstraint *)EL_height {
+- (ELLayoutConstraintModel *)EL_height {
   return [self constraintWithAttribute:NSLayoutAttributeHeight];
 }
 
-- (ELLayoutConstraint *)constraintWithAttribute:(NSLayoutAttribute)attribute {
-  ELLayoutConstraint *constraint = [ELLayoutConstraint new];
+- (ELLayoutConstraintModel *)constraintWithAttribute:(NSLayoutAttribute)attribute {
+  ELLayoutConstraintModel *constraint = [ELLayoutConstraintModel new];
   constraint.view = self;
   constraint.attribute = attribute;
   return constraint;
