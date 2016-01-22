@@ -36,7 +36,7 @@
 
 - (IBAction)remakeAction:(id)sender {
   [_testView ELContraintsRemake:^(ELConstraintsMaker *make) {
-    make.EL_height.equalTo(@100);
+    make.EL_height.equalTo(@50);
     make.EL_centerX.equalTo(@0);
     make.EL_centerY.equalTo(@0);
     make.EL_width.equalTo(@200);
@@ -50,7 +50,15 @@
 }
 
 - (IBAction)updateAction:(id)sender {
+    [_testView ELContraintsUpdate:^(ELConstraintsMaker *make) {
+        make.EL_height.equalTo(@300);
+    }];
     
+    [self.view setNeedsLayout];
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }];
 }
 
 - (void)didReceiveMemoryWarning {

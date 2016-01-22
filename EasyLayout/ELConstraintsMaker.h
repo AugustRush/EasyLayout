@@ -20,10 +20,13 @@
 @property(nonatomic, readonly) ELLayoutConstraintModel *EL_width;
 @property(nonatomic, readonly) ELLayoutConstraintModel *EL_height;
 
+@property(nonatomic, assign) BOOL isUpdating;
+
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithView:(UIView *)view;
 
 - (void)install;
 - (void)removeAll;
+- (void)update;
 
 @end

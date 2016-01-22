@@ -45,7 +45,8 @@
   return [self constraintWithAttribute:NSLayoutAttributeHeight];
 }
 
-- (ELLayoutConstraintModel *)constraintWithAttribute:(NSLayoutAttribute)attribute {
+- (ELLayoutConstraintModel *)constraintWithAttribute:
+    (NSLayoutAttribute)attribute {
   ELLayoutConstraintModel *constraint = [ELLayoutConstraintModel new];
   constraint.view = self;
   constraint.attribute = attribute;
@@ -69,6 +70,7 @@
 - (void)ELContraintsMake:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
+  maker.isUpdating = NO;
   block(maker);
   [maker install];
 }
@@ -76,9 +78,18 @@
 - (void)ELContraintsRemake:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
+  maker.isUpdating = NO;
   [maker removeAll];
   block(maker);
   [maker install];
+}
+
+- (void)ELContraintsUpdate:(void (^)(ELConstraintsMaker *))block {
+  self.translatesAutoresizingMaskIntoConstraints = NO;
+  ELConstraintsMaker *maker = [self ELMaker];
+  maker.isUpdating = YES;
+  block(maker);
+  [maker update];
 }
 
 @end

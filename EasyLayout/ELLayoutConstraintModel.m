@@ -9,7 +9,9 @@
 #import "ELConstraintsMaker.h"
 #import "ELLayoutConstraintModel.h"
 
-@implementation ELLayoutConstraintModel
+@implementation ELLayoutConstraintModel {
+  __weak NSLayoutConstraint *_constraint;
+}
 
 - (instancetype)init {
   self = [super init];
@@ -20,6 +22,10 @@
     _toAttribute = NSLayoutAttributeNotAnAttribute;
   }
   return self;
+}
+
+- (void)dealloc {
+  NSLog(@"temple dealloc");
 }
 
 #pragma mark - private methods
@@ -33,9 +39,9 @@
 - (void)configurationWithViewOrNumber:(id)viewOrNumber
                              relation:(NSLayoutRelation)relation {
   _relation = relation;
-  _toAttribute = _attribute;
   if ([viewOrNumber isKindOfClass:[UIView class]]) {
     _toView = viewOrNumber;
+    _toAttribute = _attribute;
   } else if ([viewOrNumber isKindOfClass:[NSNumber class]]) {
     if ([self needRelativeToSuper]) { // if attribute is width or height , this
                                       // should not be relative to superView
@@ -45,8 +51,25 @@
     }
     _constant = [viewOrNumber floatValue];
   } else {
-      NSAssert(0, @"unsupport this type!");
+    NSAssert(0, @"unsupport this type!");
   }
+}
+
+- (NSLayoutConstraint *)__constraint {
+  if (_constraint == nil) {
+    _constraint = [NSLayoutConstraint constraintWithItem:_view
+                                               attribute:_attribute
+                                               relatedBy:_relation
+                                                  toItem:_toView
+                                               attribute:_toAttribute
+                                              multiplier:_ratio
+                                                constant:_constant];
+  }
+  return _constraint;
+}
+
+- (BOOL)isEqual:(id)object {
+  return NO;
 }
 
 #pragma mark - public methods
@@ -90,8 +113,10 @@
   };
 }
 
-- (void)dealloc {
-  NSLog(@"temple dealloc");
+- (ELLayoutConstraintReturnBlock)constraint {
+  return ^{
+    return [self __constraint];
+  };
 }
 
 @end
