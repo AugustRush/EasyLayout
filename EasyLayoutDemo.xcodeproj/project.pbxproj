@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		971D6C191C40B00F00C52F2D /* UIView+EasyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 971D6C181C40B00F00C52F2D /* UIView+EasyLayout.m */; };
-		971D6C1C1C40B05B00C52F2D /* ELConstraintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 971D6C1B1C40B05B00C52F2D /* ELConstraintsMaker.m */; };
-		971D6C1F1C40B39B00C52F2D /* ELLayoutConstraintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 971D6C1E1C40B39B00C52F2D /* ELLayoutConstraintModel.m */; };
 		977C9ABF1BFC903B00106888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 977C9ABE1BFC903B00106888 /* main.m */; };
 		977C9AC21BFC903B00106888 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 977C9AC11BFC903B00106888 /* AppDelegate.m */; };
 		977C9AC51BFC903B00106888 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 977C9AC41BFC903B00106888 /* ViewController.m */; };
@@ -18,6 +15,9 @@
 		977C9ACD1BFC903B00106888 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977C9ACB1BFC903B00106888 /* LaunchScreen.storyboard */; };
 		977C9AD81BFC903B00106888 /* EasyLayoutDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 977C9AD71BFC903B00106888 /* EasyLayoutDemoTests.m */; };
 		977C9AE31BFC903B00106888 /* EasyLayoutDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 977C9AE21BFC903B00106888 /* EasyLayoutDemoUITests.m */; };
+		97A0D0681C525D5200EC0516 /* ELConstraintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0631C525D5200EC0516 /* ELConstraintsMaker.m */; };
+		97A0D0691C525D5200EC0516 /* ELLayoutConstraintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */; };
+		97A0D06A1C525D5200EC0516 /* UIView+EasyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		971D6C171C40B00F00C52F2D /* UIView+EasyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasyLayout.h"; sourceTree = "<group>"; };
-		971D6C181C40B00F00C52F2D /* UIView+EasyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasyLayout.m"; sourceTree = "<group>"; };
-		971D6C1A1C40B05B00C52F2D /* ELConstraintsMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELConstraintsMaker.h; sourceTree = "<group>"; };
-		971D6C1B1C40B05B00C52F2D /* ELConstraintsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELConstraintsMaker.m; sourceTree = "<group>"; };
-		971D6C1D1C40B39B00C52F2D /* ELLayoutConstraintModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELLayoutConstraintModel.h; sourceTree = "<group>"; };
-		971D6C1E1C40B39B00C52F2D /* ELLayoutConstraintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELLayoutConstraintModel.m; sourceTree = "<group>"; };
 		977C9ABA1BFC903B00106888 /* EasyLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977C9ABE1BFC903B00106888 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		977C9AC01BFC903B00106888 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -60,7 +54,13 @@
 		977C9ADE1BFC903B00106888 /* EasyLayoutDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyLayoutDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		977C9AE21BFC903B00106888 /* EasyLayoutDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EasyLayoutDemoUITests.m; sourceTree = "<group>"; };
 		977C9AE41BFC903B00106888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		978B00771C50C0F0001AA97A /* EasyLayoutDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLayoutDefine.h; sourceTree = "<group>"; };
+		97A0D0611C525D5200EC0516 /* EasyLayoutDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLayoutDefine.h; sourceTree = "<group>"; };
+		97A0D0621C525D5200EC0516 /* ELConstraintsMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELConstraintsMaker.h; sourceTree = "<group>"; };
+		97A0D0631C525D5200EC0516 /* ELConstraintsMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELConstraintsMaker.m; sourceTree = "<group>"; };
+		97A0D0641C525D5200EC0516 /* ELLayoutConstraintModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELLayoutConstraintModel.h; sourceTree = "<group>"; };
+		97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELLayoutConstraintModel.m; sourceTree = "<group>"; };
+		97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasyLayout.h"; sourceTree = "<group>"; };
+		97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasyLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 		977C9ABC1BFC903B00106888 /* EasyLayoutDemo */ = {
 			isa = PBXGroup;
 			children = (
-				977C9AF01BFC905500106888 /* EasyLayout */,
+				97A0D0601C525D5200EC0516 /* EasyLayout */,
 				977C9AC01BFC903B00106888 /* AppDelegate.h */,
 				977C9AC11BFC903B00106888 /* AppDelegate.m */,
 				977C9AC31BFC903B00106888 /* ViewController.h */,
@@ -151,19 +151,19 @@
 			path = EasyLayoutDemoUITests;
 			sourceTree = "<group>";
 		};
-		977C9AF01BFC905500106888 /* EasyLayout */ = {
+		97A0D0601C525D5200EC0516 /* EasyLayout */ = {
 			isa = PBXGroup;
 			children = (
-				971D6C171C40B00F00C52F2D /* UIView+EasyLayout.h */,
-				971D6C181C40B00F00C52F2D /* UIView+EasyLayout.m */,
-				978B00771C50C0F0001AA97A /* EasyLayoutDefine.h */,
-				971D6C1A1C40B05B00C52F2D /* ELConstraintsMaker.h */,
-				971D6C1B1C40B05B00C52F2D /* ELConstraintsMaker.m */,
-				971D6C1D1C40B39B00C52F2D /* ELLayoutConstraintModel.h */,
-				971D6C1E1C40B39B00C52F2D /* ELLayoutConstraintModel.m */,
+				97A0D0611C525D5200EC0516 /* EasyLayoutDefine.h */,
+				97A0D0621C525D5200EC0516 /* ELConstraintsMaker.h */,
+				97A0D0631C525D5200EC0516 /* ELConstraintsMaker.m */,
+				97A0D0641C525D5200EC0516 /* ELLayoutConstraintModel.h */,
+				97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */,
+				97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */,
+				97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */,
 			);
-			name = EasyLayout;
-			sourceTree = "<group>";
+			path = EasyLayout;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -295,11 +295,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				971D6C1C1C40B05B00C52F2D /* ELConstraintsMaker.m in Sources */,
+				97A0D0681C525D5200EC0516 /* ELConstraintsMaker.m in Sources */,
 				977C9AC51BFC903B00106888 /* ViewController.m in Sources */,
+				97A0D0691C525D5200EC0516 /* ELLayoutConstraintModel.m in Sources */,
 				977C9AC21BFC903B00106888 /* AppDelegate.m in Sources */,
-				971D6C1F1C40B39B00C52F2D /* ELLayoutConstraintModel.m in Sources */,
-				971D6C191C40B00F00C52F2D /* UIView+EasyLayout.m in Sources */,
+				97A0D06A1C525D5200EC0516 /* UIView+EasyLayout.m in Sources */,
 				977C9ABF1BFC903B00106888 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
