@@ -21,8 +21,8 @@
 @property(nonatomic, readonly) ELLayoutConstraintModel *EL_width;
 @property(nonatomic, readonly) ELLayoutConstraintModel *EL_height;
 
-- (void)ELContraintsMake:(void (^)(ELConstraintsMaker *make))block;
-- (void)ELContraintsRemake:(void (^)(ELConstraintsMaker *make))block;
-- (void)ELContraintsUpdate:(void (^)(ELConstraintsMaker *))block;
+- (void)makeConstraints:(void (^)(ELConstraintsMaker *make))block;
+- (void)remakeConstraints:(void (^)(ELConstraintsMaker *make))block;
+- (void)updateConstraints:(void (^)(ELConstraintsMaker *))block;
 
 @end

@@ -67,7 +67,7 @@
 
 #pragma mark - public methods
 
-- (void)ELContraintsMake:(void (^)(ELConstraintsMaker *))block {
+- (void)makeConstraints:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
   maker.isUpdating = NO;
@@ -75,7 +75,7 @@
   [maker install];
 }
 
-- (void)ELContraintsRemake:(void (^)(ELConstraintsMaker *))block {
+- (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
   maker.isUpdating = NO;
@@ -84,7 +84,7 @@
   [maker install];
 }
 
-- (void)ELContraintsUpdate:(void (^)(ELConstraintsMaker *))block {
+- (void)updateConstraints:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
   maker.isUpdating = YES;
