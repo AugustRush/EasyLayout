@@ -81,11 +81,4 @@
   [maker install];
 }
 
-- (void)EL_layoutUpdate:(void (^)(ELConstraintsMaker *))block {
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  ELConstraintsMaker *maker = [self ELMaker];
-  block(maker);
-  [maker updateOrInstall];
-}
-
 @end

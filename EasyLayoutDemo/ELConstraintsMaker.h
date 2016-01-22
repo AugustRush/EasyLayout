@@ -25,5 +25,5 @@
 
 - (void)install;
 - (void)removeAll;
-- (void)updateOrInstall;
+
 @end

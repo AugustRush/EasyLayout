@@ -54,10 +54,6 @@
   [NSLayoutConstraint deactivateConstraints:_constraints.allObjects];
 }
 
-- (void)updateOrInstall {
-
-}
-
 #pragma mark - properties methods
 
 - (ELLayoutConstraint *)EL_left {

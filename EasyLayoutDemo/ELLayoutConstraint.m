@@ -45,7 +45,7 @@
     }
     _constant = [viewOrNumber floatValue];
   } else {
-    NSLog(@"paramater is error");
+      NSAssert(0, @"unsupport this type!");
   }
 }
 

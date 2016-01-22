@@ -23,5 +23,4 @@
 
 - (void)EL_layoutMake:(void(^)(ELConstraintsMaker *make))block;
 - (void)EL_layoutRemake:(void (^)(ELConstraintsMaker *make))block;
-- (void)EL_layoutUpdate:(void (^)(ELConstraintsMaker *make))block;
 @end
