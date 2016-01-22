@@ -26,7 +26,7 @@
 
   self.testView = testView;
 
-  [testView EL_layoutMake:^(ELConstraintsMaker *make) {
+  [testView ELContraintsMake:^(ELConstraintsMaker *make) {
     make.EL_height.equalTo(self.view).multiplier(0.5).offset(-200);
     make.EL_left.equalTo(self.view).multiplier(2.0).offset(100);
     make.EL_right.equalTo(@-50);
@@ -35,7 +35,7 @@
 }
 
 - (IBAction)remakeAction:(id)sender {
-  [_testView EL_layoutRemake:^(ELConstraintsMaker *make) {
+  [_testView ELContraintsRemake:^(ELConstraintsMaker *make) {
     make.EL_height.equalTo(@100);
     make.EL_centerX.equalTo(@0);
     make.EL_centerY.equalTo(@0);
@@ -50,9 +50,7 @@
 }
 
 - (IBAction)updateAction:(id)sender {
-    [_testView EL_layoutUpdate:^(ELConstraintsMaker *make) {
-        make.EL_height.equalTo(@200);
-    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

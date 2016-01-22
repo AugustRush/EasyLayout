@@ -66,14 +66,14 @@
 
 #pragma mark - public methods
 
-- (void)EL_layoutMake:(void (^)(ELConstraintsMaker *))block {
+- (void)ELContraintsMake:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
   block(maker);
   [maker install];
 }
 
-- (void)EL_layoutRemake:(void (^)(ELConstraintsMaker *))block {
+- (void)ELContraintsRemake:(void (^)(ELConstraintsMaker *))block {
   self.translatesAutoresizingMaskIntoConstraints = NO;
   ELConstraintsMaker *maker = [self ELMaker];
   [maker removeAll];
