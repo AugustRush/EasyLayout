@@ -61,6 +61,7 @@
 		97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELLayoutConstraintModel.m; sourceTree = "<group>"; };
 		97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasyLayout.h"; sourceTree = "<group>"; };
 		97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasyLayout.m"; sourceTree = "<group>"; };
+		97A0D06D1C53C77C00EC0516 /* ELLayoutAttributeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELLayoutAttributeProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +162,7 @@
 				97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */,
 				97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */,
 				97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */,
+				97A0D06D1C53C77C00EC0516 /* ELLayoutAttributeProtocol.h */,
 			);
 			path = EasyLayout;
 			sourceTree = SOURCE_ROOT;

@@ -9,17 +9,9 @@
 #import "ELConstraintsMaker.h"
 #import "ELLayoutConstraintModel.h"
 #import <UIKit/UIKit.h>
+#import "ELLayoutAttributeProtocol.h"
 
-@interface UIView (EasyLayout)
-
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_left;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_right;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_top;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_bottom;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerX;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_centerY;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_width;
-@property(nonatomic, readonly) ELLayoutConstraintModel *EL_height;
+@interface UIView (EasyLayout)<ELLayoutAttributeProtocol>
 
 - (void)makeConstraints:(void (^)(ELConstraintsMaker *make))block;
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *make))block;
