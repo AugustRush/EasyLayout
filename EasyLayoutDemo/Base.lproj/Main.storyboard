@@ -13,22 +13,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XEd-3r-6uZ">
-                                <rect key="frame" x="95" y="269" width="131" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="remake constraints"/>
-                                <connections>
-                                    <action selector="remakeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXR-oS-ATp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lbf-Rf-N91">
-                                <rect key="frame" x="96" y="327" width="129" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="update constraints"/>
-                                <connections>
-                                    <action selector="updateAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmX-8p-Jcx"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="ovt-Mg-c6l">
                                 <rect key="frame" x="9" y="26" width="98" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -49,6 +33,30 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.73987202007218755" green="1" blue="0.48062173295977606" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XEd-3r-6uZ">
+                                <rect key="frame" x="95" y="269" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="remake constraints"/>
+                                <connections>
+                                    <action selector="remakeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXR-oS-ATp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lbf-Rf-N91">
+                                <rect key="frame" x="96" y="327" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="update constraints"/>
+                                <connections>
+                                    <action selector="updateAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmX-8p-Jcx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fyD-7d-nDT">
+                                <rect key="frame" x="109" y="393" width="103" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="rollback to first"/>
+                                <connections>
+                                    <action selector="rollbackToFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N78-78-0mg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -56,7 +64,10 @@
                         <outlet property="aView" destination="CFw-qt-LmA" id="YsF-iq-cHy"/>
                         <outlet property="bview" destination="5a4-IT-QJE" id="xuu-sk-Rxa"/>
                         <outlet property="cView" destination="Kwp-7S-K0i" id="2Xw-A5-SnS"/>
+                        <outlet property="remakeButton" destination="XEd-3r-6uZ" id="nrZ-x8-ZkT"/>
+                        <outlet property="rollbackButton" destination="fyD-7d-nDT" id="SkX-dg-N4x"/>
                         <outlet property="testView" destination="ovt-Mg-c6l" id="YCy-Y3-adp"/>
+                        <outlet property="updateButton" destination="Lbf-Rf-N91" id="7JN-4p-UBm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

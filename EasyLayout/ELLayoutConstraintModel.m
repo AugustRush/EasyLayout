@@ -36,20 +36,24 @@
           _attribute != NSLayoutAttributeHeight);
 }
 
-- (void)configurationWithViewOrNumber:(id)viewOrNumber
-                             relation:(NSLayoutRelation)relation {
+- (void)configurationWithSupportType:(id)supportType
+                            relation:(NSLayoutRelation)relation {
   _relation = relation;
-  if ([viewOrNumber isKindOfClass:[UIView class]]) {
-    _toView = viewOrNumber;
+  if ([supportType isKindOfClass:[UIView class]]) {
+    _toView = supportType;
     _toAttribute = _attribute;
-  } else if ([viewOrNumber isKindOfClass:[NSNumber class]]) {
+  } else if ([supportType isKindOfClass:[NSNumber class]]) {
     if ([self needRelativeToSuper]) { // if attribute is width or height , this
                                       // should not be relative to superView
                                       // unless sepecific
       _toView = _view.superview;
       _toAttribute = _attribute;
     }
-    _constant = [viewOrNumber floatValue];
+    _constant = [supportType floatValue];
+  } else if ([supportType isKindOfClass:[ELLayoutConstraintModel class]]) {
+    ELLayoutConstraintModel *model = (ELLayoutConstraintModel *)supportType;
+    _toView = model.view;
+    _toAttribute = model.attribute;
   } else {
     NSAssert(0, @"unsupport this type!");
   }
@@ -75,26 +79,26 @@
 #pragma mark - public methods
 
 - (ELLayoutLinkerBlock)equalTo {
-  return ^ELLayoutConstraintModel *(id viewOrNumber) {
-    [self configurationWithViewOrNumber:viewOrNumber
-                               relation:NSLayoutRelationEqual];
+  return ^ELLayoutConstraintModel *(id supportType) {
+    [self configurationWithSupportType:supportType
+                              relation:NSLayoutRelationEqual];
     return self;
   };
 }
 
 - (ELLayoutLinkerBlock)greaterThanOrEqualTo {
-  return ^ELLayoutConstraintModel *(id viewOrNumber) {
-    [self configurationWithViewOrNumber:viewOrNumber
-                               relation:NSLayoutRelationGreaterThanOrEqual];
+  return ^ELLayoutConstraintModel *(id supportType) {
+    [self configurationWithSupportType:supportType
+                              relation:NSLayoutRelationGreaterThanOrEqual];
 
     return self;
   };
 }
 
 - (ELLayoutLinkerBlock)lessThanOrEqualTo {
-  return ^ELLayoutConstraintModel *(id viewOrNumber) {
-    [self configurationWithViewOrNumber:viewOrNumber
-                               relation:NSLayoutRelationLessThanOrEqual];
+  return ^ELLayoutConstraintModel *(id supportType) {
+    [self configurationWithSupportType:supportType
+                              relation:NSLayoutRelationLessThanOrEqual];
     return self;
   };
 }

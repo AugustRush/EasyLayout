@@ -23,6 +23,6 @@
 
 - (void)makeConstraints:(void (^)(ELConstraintsMaker *make))block;
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *make))block;
-- (void)updateConstraints:(void (^)(ELConstraintsMaker *))block;
+- (void)updateConstraints:(void (^)(ELConstraintsMaker *make))block;
 
 @end
