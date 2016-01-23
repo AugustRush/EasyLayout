@@ -11,7 +11,10 @@
 
 @interface ViewController ()
 
-@property(nonatomic, strong) UIView *testView;
+@property(nonatomic, weak) IBOutlet UIView *testView;
+@property (weak, nonatomic) IBOutlet UIView *aView;
+@property (weak, nonatomic) IBOutlet UIView *bview;
+@property (weak, nonatomic) IBOutlet UIView *cView;
 
 @end
 
@@ -20,13 +23,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  UIView *testView = [[UIView alloc] init];
-  testView.backgroundColor = [UIColor redColor];
-  [self.view addSubview:testView];
-
-  self.testView = testView;
-
-  [testView makeConstraints:^(ELConstraintsMaker *make) {
+  [_testView makeConstraints:^(ELConstraintsMaker *make) {
     make.EL_height.equalTo(self.view).multiplier(0.5).offset(-200);
     make.EL_left.equalTo(self.view).multiplier(2.0).offset(100);
     make.EL_right.equalTo(@-50);
@@ -41,24 +38,25 @@
     make.EL_centerY.equalTo(@0);
     make.EL_width.equalTo(@200);
   }];
-
-  [self.view setNeedsLayout];
-  [UIView animateWithDuration:1.0
-                   animations:^{
-                     [self.view layoutIfNeeded];
-                   }];
+    [self layoutPerformAnimation];
 }
 
 - (IBAction)updateAction:(id)sender {
     [_testView updateConstraints:^(ELConstraintsMaker *make) {
-        make.EL_height.equalTo(@300);
+        make.EL_height.equalTo(self.view);
+        make.EL_width.equalTo(self.view);
     }];
     
+    [self layoutPerformAnimation];
+}
+
+- (void)layoutPerformAnimation {
     [self.view setNeedsLayout];
     [UIView animateWithDuration:1.0
                      animations:^{
                          [self.view layoutIfNeeded];
                      }];
+
 }
 
 - (void)didReceiveMemoryWarning {

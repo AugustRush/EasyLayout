@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -9,40 +9,59 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEd-3r-6uZ">
-                                <rect key="frame" x="235" y="285" width="131" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XEd-3r-6uZ">
+                                <rect key="frame" x="95" y="269" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="remake constraints"/>
                                 <connections>
                                     <action selector="remakeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXR-oS-ATp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbf-Rf-N91">
-                                <rect key="frame" x="236" y="343" width="129" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lbf-Rf-N91">
+                                <rect key="frame" x="96" y="327" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="update constraints"/>
                                 <connections>
                                     <action selector="updateAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmX-8p-Jcx"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="ovt-Mg-c6l">
+                                <rect key="frame" x="9" y="26" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.47185782479999999" blue="0.56504028569999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="5a4-IT-QJE">
+                                <rect key="frame" x="20" y="150" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.39962297997021123" green="0.46516152954939005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Kwp-7S-K0i">
+                                <rect key="frame" x="144" y="144" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.23350542880053993" blue="0.60924332528337555" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="CFw-qt-LmA">
+                                <rect key="frame" x="144" y="20" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.73987202007218755" green="1" blue="0.48062173295977606" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Lbf-Rf-N91" firstAttribute="top" secondItem="XEd-3r-6uZ" secondAttribute="bottom" constant="28" id="54P-wV-Ixh"/>
-                            <constraint firstItem="XEd-3r-6uZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CSy-Ta-t9M"/>
-                            <constraint firstItem="XEd-3r-6uZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sas-dx-bbS"/>
-                            <constraint firstItem="Lbf-Rf-N91" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v1p-DD-n6b"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aView" destination="CFw-qt-LmA" id="YsF-iq-cHy"/>
+                        <outlet property="bview" destination="5a4-IT-QJE" id="xuu-sk-Rxa"/>
+                        <outlet property="cView" destination="Kwp-7S-K0i" id="2Xw-A5-SnS"/>
+                        <outlet property="testView" destination="ovt-Mg-c6l" id="YCy-Y3-adp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="290" y="233"/>
         </scene>
     </scenes>
 </document>

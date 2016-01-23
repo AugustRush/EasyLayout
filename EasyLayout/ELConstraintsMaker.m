@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, ELAttribute) {
 
 @implementation ELConstraintsMaker {
   __weak UIView *_view;
-  NSMutableDictionary<NSString *,ELLayoutConstraintModel *> *_models;
+  NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
   NSHashTable<ELLayoutConstraintModel *> *_updateModels;
   NSHashTable<NSLayoutConstraint *> *_constraints;
 }
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, ELAttribute) {
   self = [super init];
   if (self) {
     _view = view;
-      _models = @{}.mutableCopy;
+    _models = @{}.mutableCopy;
     _updateModels = [NSHashTable weakObjectsHashTable];
     _constraints = [NSHashTable weakObjectsHashTable];
   }
@@ -61,18 +61,31 @@ typedef NS_ENUM(NSUInteger, ELAttribute) {
 }
 
 - (void)update {
-    for (ELLayoutConstraintModel *model in _updateModels) {
-        NSString *identifier = [self identifierWithModel:model];
-        ELLayoutConstraintModel *existingModel = _models[identifier];
-        if (existingModel == nil) {
-            NSLayoutConstraint *constraint = model.constraint();
-            [constraint setActive:YES];
-            _models[identifier] = model;
-            [_constraints addObject:constraint];
-        }else{
-            existingModel.constraint().constant = model.constant;
-        }
+  for (ELLayoutConstraintModel *model in _updateModels) {
+    NSString *identifier = [self identifierWithModel:model];
+    ELLayoutConstraintModel *existingModel = _models[identifier];
+    if (existingModel != nil) {
+        //reference view and ratio should be same
+      if (model.toView == existingModel.toView &&
+          model.ratio == existingModel.ratio) {
+        existingModel.constraint().constant = model.constant;
+      } else {
+        // remove exsiting and install new
+        [existingModel.constraint() setActive:NO];
+        [self installConstraintWithModel:model identifier:identifier];
+      }
+    } else {
+      [self installConstraintWithModel:model identifier:identifier];
     }
+  }
+}
+
+- (void)installConstraintWithModel:(ELLayoutConstraintModel *)model
+                        identifier:(NSString *)identifier {
+  NSLayoutConstraint *constraint = model.constraint();
+  [constraint setActive:YES];
+  _models[identifier] = model;
+  [_constraints addObject:constraint];
 }
 
 #pragma mark - properties methods
@@ -158,12 +171,16 @@ typedef NS_ENUM(NSUInteger, ELAttribute) {
 }
 
 - (NSString *)identifierWithModel:(ELLayoutConstraintModel *)model {
-    NSMutableString *string = [NSMutableString string];
-    [string appendFormat:@"%p/",model.view];
-    [string appendFormat:@"%ld/",(long)model.attribute];
-    [string appendFormat:@"%p/",model.toView];
-    [string appendFormat:@"%ld/",(long)model.toAttribute];
-    return string.copy;
+  NSMutableString *string = [NSMutableString string];
+  [string appendFormat:@"%p/", model.view];
+  [string appendFormat:@"%ld/", (long)model.attribute];
+    //if relation is equal, this should be only one on common
+  if (model.relation != NSLayoutRelationEqual) {
+    [string appendFormat:@"%ld/", (long)model.relation];
+    [string appendFormat:@"%p/", model.toView];
+    [string appendFormat:@"%ld/", (long)model.toAttribute];
+  }
+  return string.copy;
 }
 
 @end
