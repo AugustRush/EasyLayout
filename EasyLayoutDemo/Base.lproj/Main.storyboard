@@ -57,6 +57,14 @@
                                     <action selector="rollbackToFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N78-78-0mg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4to-Wv-0By">
+                                <rect key="frame" x="129" y="439" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="deactive "/>
+                                <connections>
+                                    <action selector="deactiveAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4vy-ca-kkY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -64,6 +72,7 @@
                         <outlet property="aView" destination="CFw-qt-LmA" id="YsF-iq-cHy"/>
                         <outlet property="bview" destination="5a4-IT-QJE" id="xuu-sk-Rxa"/>
                         <outlet property="cView" destination="Kwp-7S-K0i" id="2Xw-A5-SnS"/>
+                        <outlet property="deactiveButton" destination="4to-Wv-0By" id="QoQ-n5-T6O"/>
                         <outlet property="remakeButton" destination="XEd-3r-6uZ" id="nrZ-x8-ZkT"/>
                         <outlet property="rollbackButton" destination="fyD-7d-nDT" id="SkX-dg-N4x"/>
                         <outlet property="testView" destination="ovt-Mg-c6l" id="YCy-Y3-adp"/>

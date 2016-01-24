@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *remakeButton;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
 @property (weak, nonatomic) IBOutlet UIButton *rollbackButton;
+@property (weak, nonatomic) IBOutlet UIButton *deactiveButton;
+
+@property (nonatomic, weak) NSLayoutConstraint *testRecordConstraint;
+
 @end
 
 @implementation ViewController
@@ -76,7 +80,7 @@
 - (IBAction)remakeAction:(id)sender {
   [_testView remakeConstraints:^(ELConstraintsMaker *make) {
     make.EL_height.equalTo(@50);
-    make.EL_centerX.equalTo(@0);
+    self.testRecordConstraint = make.EL_centerX.equalTo(@0).constraint();
     make.EL_centerY.equalTo(@0);
     make.EL_width.equalTo(@200);
   }];
@@ -102,6 +106,10 @@
 - (IBAction)rollbackToFirst:(id)sender {
   [self initializeLayout];
   [self layoutPerformAnimation];
+}
+
+- (IBAction)deactiveAction:(id)sender {
+    [self.testRecordConstraint setActive:NO];
 }
 
 - (void)didReceiveMemoryWarning {
