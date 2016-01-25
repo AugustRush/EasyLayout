@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		975D98581C55F23C0013F486 /* EasyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyLayout.h; sourceTree = "<group>"; };
 		977C9ABA1BFC903B00106888 /* EasyLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		977C9ABE1BFC903B00106888 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		977C9AC01BFC903B00106888 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 		97A0D0601C525D5200EC0516 /* EasyLayout */ = {
 			isa = PBXGroup;
 			children = (
+				975D98581C55F23C0013F486 /* EasyLayout.h */,
 				97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */,
 				97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */,
 				97A0D0611C525D5200EC0516 /* EasyLayoutDefine_unused.h */,

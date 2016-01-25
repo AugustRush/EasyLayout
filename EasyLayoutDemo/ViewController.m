@@ -6,7 +6,7 @@
 //  Copyright © 2015 AugustRush. All rights reserved.
 //
 
-#import "UIView+EasyLayout.h"
+#import "EasyLayout.h"
 #import "ViewController.h"
 
 @interface ViewController ()
@@ -28,8 +28,9 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  [self initializeLayout];
+    [super viewDidLoad];
+
+    [self initializeLayout];
     [self buttonsLayout];
 }
 
