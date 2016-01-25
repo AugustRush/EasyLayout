@@ -14,14 +14,15 @@
 }
 
 - (instancetype)init {
-  self = [super init];
-  if (self) {
-    _constant = 0;
-    _ratio = 1;
-    _toView = nil;
-    _toAttribute = NSLayoutAttributeNotAnAttribute;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _constant = 0;
+        _ratio = 1;
+        _toView = nil;
+        _toAttribute = NSLayoutAttributeNotAnAttribute;
+        _priorityLevel = 1000;
+    }
+    return self;
 }
 
 - (void)dealloc {
@@ -68,6 +69,7 @@
                                                attribute:_toAttribute
                                               multiplier:_ratio
                                                 constant:_constant];
+      _constraint.priority = _priorityLevel;
   }
   return _constraint;
 }
@@ -115,6 +117,13 @@
     _constant += offset;
     return self;
   };
+}
+
+- (ELLayoutPriorityBlock)priority {
+    return ^(CGFloat level){
+        _priorityLevel = level;
+        return self;
+    };
 }
 
 - (ELLayoutConstraintReturnBlock)constraint {
