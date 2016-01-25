@@ -119,28 +119,28 @@
 #pragma mark - public methods
 
 - (void)makeConstraints:(void (^)(ELConstraintsMaker *))block {
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  ELConstraintsMaker *maker = [self ELMaker];
-  maker.isUpdating = NO;
-  block(maker);
-  [maker install];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    ELConstraintsMaker *maker = [self ELMaker];
+    maker.isUpdating = NO;
+    block(maker);
+    [maker install];
 }
 
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block {
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  ELConstraintsMaker *maker = [self ELMaker];
-  maker.isUpdating = NO;
-  [maker removeAll];
-  block(maker);
-  [maker install];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    ELConstraintsMaker *maker = [self ELMaker];
+    maker.isUpdating = NO;
+    [maker removeAll];
+    block(maker);
+    [maker install];
 }
 
 - (void)updateConstraints:(void (^)(ELConstraintsMaker *))block {
-  self.translatesAutoresizingMaskIntoConstraints = NO;
-  ELConstraintsMaker *maker = [self ELMaker];
-  maker.isUpdating = YES;
-  block(maker);
-  [maker update];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
+    ELConstraintsMaker *maker = [self ELMaker];
+    maker.isUpdating = YES;
+    block(maker);
+    [maker update];
 }
 
 @end

@@ -79,7 +79,6 @@
 
 #pragma mark - attributes
 
-
 - (ELLayoutConstraintModel *)EL_left {
   return [self modelWithAttribute:NSLayoutAttributeLeft];
 }
