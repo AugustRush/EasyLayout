@@ -7,7 +7,6 @@
 //
 
 #import "ELConstraintsMaker.h"
-#import "EasyLayoutDefine.h"
 #import "UIView+EasyLayout.h"
 
 typedef NS_ENUM(NSUInteger, ELAttribute) {
