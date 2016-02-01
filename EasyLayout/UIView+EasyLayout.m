@@ -73,7 +73,7 @@
     return [self constraintWithAttribute:NSLayoutAttributeRightMargin];
 }
 
--(ELLayoutConstraintModel *)EL_topMargin {
+- (ELLayoutConstraintModel *)EL_topMargin {
     return [self constraintWithAttribute:NSLayoutAttributeTopMargin];
 }
 

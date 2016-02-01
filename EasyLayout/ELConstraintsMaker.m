@@ -30,10 +30,6 @@
   return self;
 }
 
-- (void)dealloc {
-  NSLog(@"test maker dealloc");
-}
-
 #pragma mark - public methods
 
 - (void)install {

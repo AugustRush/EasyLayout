@@ -25,10 +25,6 @@
     return self;
 }
 
-- (void)dealloc {
-  NSLog(@"temple dealloc");
-}
-
 #pragma mark - private methods
 
 - (BOOL)needRelativeToSuper {
