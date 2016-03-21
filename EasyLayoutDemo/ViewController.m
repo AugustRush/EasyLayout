@@ -36,62 +36,62 @@
 
 - (void)buttonsLayout {
     [self.remakeButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.EL_centerX.equalTo(@0);
-        make.EL_centerY.equalTo(@0);
+        make.centerX.equalTo(@0);
+        make.centerY.equalTo(@0);
     }];
     [self.updateButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.EL_centerX.equalTo(@0);
-        make.EL_top.equalTo(self.remakeButton.EL_bottom).offset(10);
+        make.centerX.equalTo(@0);
+        make.top.equalTo(self.remakeButton.bottom).offset(10);
     }];
     [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.EL_centerX.equalTo(@0);
-        make.EL_top.equalTo(self.updateButton.EL_bottom).offset(10);
+        make.centerX.equalTo(@0);
+        make.top.equalTo(self.updateButton.bottom).offset(10);
     }];
 }
 
 - (void)initializeLayout {
   [_testView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.EL_width.equalTo(self.view).multiplier(0.5).offset(-10);
-    make.EL_height.equalTo(@100);
-    make.EL_left.equalTo(@5);
-    make.EL_top.equalTo(@5);
+    make.width.equalTo(self.view).multiplier(0.5).offset(-10);
+    make.height.equalTo(@100);
+    make.left.equalTo(@5);
+    make.top.equalTo(@5);
   }];
 
   [_aView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.EL_left.equalTo(_testView.EL_right).offset(5);
-    make.EL_top.equalTo(_testView);
-    make.EL_width.equalTo(_testView);
-    make.EL_height.equalTo(_testView);
+    make.left.equalTo(_testView.right).offset(5);
+    make.top.equalTo(_testView);
+    make.width.equalTo(_testView);
+    make.height.equalTo(_testView);
   }];
 
   [_bview remakeConstraints:^(ELConstraintsMaker *make) {
-    make.EL_left.equalTo(_testView);
-    make.EL_top.equalTo(_testView.EL_bottom).offset(5);
-    make.EL_width.equalTo(_testView);
-    make.EL_height.equalTo(_testView);
+    make.left.equalTo(_testView);
+    make.top.equalTo(_testView.bottom).offset(5);
+    make.width.equalTo(_testView);
+    make.height.equalTo(_testView);
   }];
   [_cView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.EL_left.equalTo(_bview.EL_right).offset(5);
-    make.EL_top.equalTo(_bview.EL_top);
-    make.EL_width.equalTo(_testView);
-    make.EL_height.equalTo(_testView);
+    make.left.equalTo(_bview.right).offset(5);
+    make.top.equalTo(_bview.top);
+    make.width.equalTo(_testView);
+    make.height.equalTo(_testView);
   }];
 }
 
 - (IBAction)remakeAction:(id)sender {
   [_testView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.EL_height.equalTo(@50);
-    self.testRecordConstraint = make.EL_centerX.equalTo(@0).constraint();
-    make.EL_centerY.equalTo(@0);
-    make.EL_width.equalTo(@200);
+    make.height.equalTo(@50);
+    self.testRecordConstraint = make.centerX.equalTo(@0).constraint();
+    make.centerY.equalTo(@0);
+    make.width.equalTo(@200);
   }];
   [self layoutPerformAnimation];
 }
 
 - (IBAction)updateAction:(id)sender {
   [_testView updateConstraints:^(ELConstraintsMaker *make) {
-    make.EL_height.equalTo(self.view);
-    make.EL_width.equalTo(self.view);
+    make.height.equalTo(self.view);
+    make.width.equalTo(self.view);
   }];
 
   [self layoutPerformAnimation];

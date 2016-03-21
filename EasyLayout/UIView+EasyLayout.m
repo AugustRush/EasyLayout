@@ -13,87 +13,87 @@
 
 #pragma mark - attributes 
 
-- (ELLayoutConstraintModel *)EL_left {
+- (ELLayoutConstraintModel *)left {
   return [self constraintWithAttribute:NSLayoutAttributeLeft];
 }
 
-- (ELLayoutConstraintModel *)EL_right {
+- (ELLayoutConstraintModel *)right {
   return [self constraintWithAttribute:NSLayoutAttributeRight];
 }
 
-- (ELLayoutConstraintModel *)EL_top {
+- (ELLayoutConstraintModel *)top {
   return [self constraintWithAttribute:NSLayoutAttributeTop];
 }
 
-- (ELLayoutConstraintModel *)EL_bottom {
+- (ELLayoutConstraintModel *)bottom {
   return [self constraintWithAttribute:NSLayoutAttributeBottom];
 }
 
-- (ELLayoutConstraintModel *)EL_centerX {
+- (ELLayoutConstraintModel *)centerX {
   return [self constraintWithAttribute:NSLayoutAttributeCenterX];
 }
 
-- (ELLayoutConstraintModel *)EL_centerY {
+- (ELLayoutConstraintModel *)centerY {
   return [self constraintWithAttribute:NSLayoutAttributeCenterY];
 }
 
-- (ELLayoutConstraintModel *)EL_width {
+- (ELLayoutConstraintModel *)width {
   return [self constraintWithAttribute:NSLayoutAttributeWidth];
 }
 
-- (ELLayoutConstraintModel *)EL_height {
+- (ELLayoutConstraintModel *)height {
   return [self constraintWithAttribute:NSLayoutAttributeHeight];
 }
 
-- (ELLayoutConstraintModel *)EL_leading {
+- (ELLayoutConstraintModel *)leading {
     return [self constraintWithAttribute:NSLayoutAttributeLeading];
 }
 
-- (ELLayoutConstraintModel *)EL_trailing {
+- (ELLayoutConstraintModel *)trailing {
     return [self constraintWithAttribute:NSLayoutAttributeTrailing];
 }
 
-- (ELLayoutConstraintModel *)EL_baseline {
+- (ELLayoutConstraintModel *)baseline {
     return [self constraintWithAttribute:NSLayoutAttributeBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_firstBaseline {
+- (ELLayoutConstraintModel *)firstBaseline {
     return [self constraintWithAttribute:NSLayoutAttributeFirstBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_lastBaseline {
+- (ELLayoutConstraintModel *)lastBaseline {
     return [self constraintWithAttribute:NSLayoutAttributeLastBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_leftMargin {
+- (ELLayoutConstraintModel *)leftMargin {
     return [self constraintWithAttribute:NSLayoutAttributeLeftMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_rightMargin {
+- (ELLayoutConstraintModel *)rightMargin {
     return [self constraintWithAttribute:NSLayoutAttributeRightMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_topMargin {
+- (ELLayoutConstraintModel *)topMargin {
     return [self constraintWithAttribute:NSLayoutAttributeTopMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_bottomMargin {
+- (ELLayoutConstraintModel *)bottomMargin {
     return [self constraintWithAttribute:NSLayoutAttributeBottomMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_leadingMargin {
+- (ELLayoutConstraintModel *)leadingMargin {
     return [self constraintWithAttribute:NSLayoutAttributeLeadingMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_trailingMargin {
+- (ELLayoutConstraintModel *)trailingMargin {
     return [self constraintWithAttribute:NSLayoutAttributeTrailingMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_centerXWithMargins {
+- (ELLayoutConstraintModel *)centerXWithMargins {
     return [self constraintWithAttribute:NSLayoutAttributeCenterXWithinMargins];
 }
 
-- (ELLayoutConstraintModel *)EL_centerYWithMargins {
+- (ELLayoutConstraintModel *)centerYWithMargins {
     return [self constraintWithAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 

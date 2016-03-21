@@ -75,87 +75,87 @@
 
 #pragma mark - attributes
 
-- (ELLayoutConstraintModel *)EL_left {
+- (ELLayoutConstraintModel *)left {
   return [self modelWithAttribute:NSLayoutAttributeLeft];
 }
 
-- (ELLayoutConstraintModel *)EL_right {
+- (ELLayoutConstraintModel *)right {
   return [self modelWithAttribute:NSLayoutAttributeRight];
 }
 
-- (ELLayoutConstraintModel *)EL_top {
+- (ELLayoutConstraintModel *)top {
   return [self modelWithAttribute:NSLayoutAttributeTop];
 }
 
-- (ELLayoutConstraintModel *)EL_bottom {
+- (ELLayoutConstraintModel *)bottom {
   return [self modelWithAttribute:NSLayoutAttributeBottom];
 }
 
-- (ELLayoutConstraintModel *)EL_centerX {
+- (ELLayoutConstraintModel *)centerX {
   return [self modelWithAttribute:NSLayoutAttributeCenterX];
 }
 
-- (ELLayoutConstraintModel *)EL_centerY {
+- (ELLayoutConstraintModel *)centerY {
   return [self modelWithAttribute:NSLayoutAttributeCenterY];
 }
 
-- (ELLayoutConstraintModel *)EL_width {
+- (ELLayoutConstraintModel *)width {
   return [self modelWithAttribute:NSLayoutAttributeWidth];
 }
 
-- (ELLayoutConstraintModel *)EL_height {
+- (ELLayoutConstraintModel *)height {
   return [self modelWithAttribute:NSLayoutAttributeHeight];
 }
 
-- (ELLayoutConstraintModel *)EL_leading {
+- (ELLayoutConstraintModel *)leading {
     return [self modelWithAttribute:NSLayoutAttributeLeading];
 }
 
-- (ELLayoutConstraintModel *)EL_trailing {
+- (ELLayoutConstraintModel *)trailing {
     return [self modelWithAttribute:NSLayoutAttributeTrailing];
 }
 
-- (ELLayoutConstraintModel *)EL_leftMargin {
+- (ELLayoutConstraintModel *)leftMargin {
     return [self modelWithAttribute:NSLayoutAttributeLeftMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_rightMargin {
+- (ELLayoutConstraintModel *)rightMargin {
     return [self modelWithAttribute:NSLayoutAttributeRightMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_topMargin {
+- (ELLayoutConstraintModel *)topMargin {
     return [self modelWithAttribute:NSLayoutAttributeTopMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_bottomMargin {
+- (ELLayoutConstraintModel *)bottomMargin {
     return [self modelWithAttribute:NSLayoutAttributeBottomMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_leadingMargin {
+- (ELLayoutConstraintModel *)leadingMargin {
     return [self modelWithAttribute:NSLayoutAttributeLeadingMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_trailingMargin {
+- (ELLayoutConstraintModel *)trailingMargin {
     return [self modelWithAttribute:NSLayoutAttributeTrailingMargin];
 }
 
-- (ELLayoutConstraintModel *)EL_baseline {
+- (ELLayoutConstraintModel *)baseline {
     return [self modelWithAttribute:NSLayoutAttributeBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_firstBaseline {
+- (ELLayoutConstraintModel *)firstBaseline {
     return [self modelWithAttribute:NSLayoutAttributeFirstBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_lastBaseline {
+- (ELLayoutConstraintModel *)lastBaseline {
     return [self modelWithAttribute:NSLayoutAttributeLastBaseline];
 }
 
-- (ELLayoutConstraintModel *)EL_centerXWithMargins {
+- (ELLayoutConstraintModel *)centerXWithMargins {
     return [self modelWithAttribute:NSLayoutAttributeCenterXWithinMargins];
 }
 
-- (ELLayoutConstraintModel *)EL_centerYWithMargins {
+- (ELLayoutConstraintModel *)centerYWithMargins {
     return [self modelWithAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 
@@ -165,84 +165,84 @@
     ELLayoutConstraintModel *model = nil;
     switch (attribute) {
         case NSLayoutAttributeLeft: {
-            model = _view.EL_left;
+            model = _view.left;
             break;
         }
         case NSLayoutAttributeRight: {
-            model = _view.EL_right;
+            model = _view.right;
             break;
         }
         case NSLayoutAttributeTop: {
-            model = _view.EL_top;
+            model = _view.top;
             break;
         }
         case NSLayoutAttributeBottom: {
-            model = _view.EL_bottom;
+            model = _view.bottom;
             break;
         }
         case NSLayoutAttributeLeading: {
-            model = _view.EL_leading;
+            model = _view.leading;
             break;
         }
         case NSLayoutAttributeTrailing: {
-            model = _view.EL_trailing;
+            model = _view.trailing;
             break;
         }
         case NSLayoutAttributeWidth: {
-            model = _view.EL_width;
+            model = _view.width;
             break;
         }
         case NSLayoutAttributeHeight: {
-            model = _view.EL_height;
+            model = _view.height;
             break;
         }
         case NSLayoutAttributeCenterX: {
-            model = _view.EL_centerX;
+            model = _view.centerX;
             break;
         }
         case NSLayoutAttributeCenterY: {
-            model = _view.EL_centerY;
+            model = _view.centerY;
             break;
         }
 //        case NSLayoutAttributeLastBaseline:
         case NSLayoutAttributeBaseline: {
-            model = _view.EL_baseline;
+            model = _view.baseline;
             break;
         }
         case NSLayoutAttributeFirstBaseline: {
-            model = _view.EL_firstBaseline;
+            model = _view.firstBaseline;
             break;
         }
         case NSLayoutAttributeLeftMargin: {
-            model = _view.EL_leftMargin;
+            model = _view.leftMargin;
             break;
         }
         case NSLayoutAttributeRightMargin: {
-            model = _view.EL_rightMargin;
+            model = _view.rightMargin;
             break;
         }
         case NSLayoutAttributeTopMargin: {
-            model = _view.EL_topMargin;
+            model = _view.topMargin;
             break;
         }
         case NSLayoutAttributeBottomMargin: {
-            model = _view.EL_bottomMargin;
+            model = _view.bottomMargin;
             break;
         }
         case NSLayoutAttributeLeadingMargin: {
-            model = _view.EL_leadingMargin;
+            model = _view.leadingMargin;
             break;
         }
         case NSLayoutAttributeTrailingMargin: {
-            model = _view.EL_trailingMargin;
+            model = _view.trailingMargin;
             break;
         }
         case NSLayoutAttributeCenterXWithinMargins: {
-            model = _view.EL_centerXWithMargins;
+            model = _view.centerXWithMargins;
             break;
         }
         case NSLayoutAttributeCenterYWithinMargins: {
-            model = _view.EL_centerYWithMargins;
+            model = _view.centerYWithMargins;
             break;
         }
         case NSLayoutAttributeNotAnAttribute: {
