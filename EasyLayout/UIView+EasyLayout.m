@@ -8,6 +8,7 @@
 
 #import "UIView+EasyLayout.h"
 #import <objc/runtime.h>
+#import "ELLayoutConstraintModel.h"
 
 @implementation UIView (EasyLayout)
 

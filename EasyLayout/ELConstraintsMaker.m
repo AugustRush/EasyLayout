@@ -264,7 +264,7 @@
   NSMutableString *string = [NSMutableString string];
   [string appendFormat:@"%p/", model.view];
   [string appendFormat:@"%ld/", (long)model.attribute];
-    //if relation is equal, this should be only one on common
+    //if relationship is equal, this should be only one on common
   if (model.relation != NSLayoutRelationEqual) {
     [string appendFormat:@"%ld/", (long)model.relation];
     [string appendFormat:@"%p/", model.toView];

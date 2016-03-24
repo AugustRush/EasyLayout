@@ -10,7 +10,7 @@
 #define EasyLayoutDefine_h
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-Layout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
           NSLayoutRelation relation, CGFloat multiplier, CGFloat margin,
           BOOL active) {
   NSLayoutConstraint *constraint =
@@ -27,65 +27,65 @@ Layout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-Layout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
           NSLayoutRelation relation, CGFloat multiplier, CGFloat margin) {
-  return Layout(constraint1, constraint2, relation, multiplier, margin, YES);
+  return ELLayout(constraint1, constraint2, relation, multiplier, margin, YES);
 }
 
 // equal relation
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
                CGFloat multiplier, CGFloat margin) {
-  return Layout(constraint1, constraint2, NSLayoutRelationEqual, multiplier,
+  return ELLayout(constraint1, constraint2, NSLayoutRelationEqual, multiplier,
                    margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
                CGFloat margin) {
-  return LayoutEqual(constraint1, constraint2, 1, margin);
+  return ELLayoutEqual(constraint1, constraint2, 1, margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2) {
-  return LayoutEqual(constraint1, constraint2, 0);
+ELLayoutEqual(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2) {
+  return ELLayoutEqual(constraint1, constraint2, 0);
 }
 // greater than or equal relation
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutGreater(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutGreater(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
                  CGFloat multiplier, CGFloat margin) {
-  return Layout(constraint1, constraint2, NSLayoutRelationGreaterThanOrEqual,
+  return ELLayout(constraint1, constraint2, NSLayoutRelationGreaterThanOrEqual,
                    multiplier, margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutGreater(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutGreater(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
                  CGFloat margin) {
-  return LayoutEqual(constraint1, constraint2, 1, margin);
+  return ELLayoutEqual(constraint1, constraint2, 1, margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutGreater(ELLayoutConstraintModel *constraint1,
+ELLayoutGreater(ELLayoutConstraintModel *constraint1,
                  ELLayoutConstraintModel *constraint2) {
-  return LayoutEqual(constraint1, constraint2, 0);
+  return ELLayoutEqual(constraint1, constraint2, 0);
 }
 // less than or equal relation
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
               CGFloat multiplier, CGFloat margin) {
-  return Layout(constraint1, constraint2, NSLayoutRelationLessThanOrEqual,
+  return ELLayout(constraint1, constraint2, NSLayoutRelationLessThanOrEqual,
                    multiplier, margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
+ELLayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2,
               CGFloat margin) {
-  return LayoutEqual(constraint1, constraint2, 1, margin);
+  return ELLayoutEqual(constraint1, constraint2, 1, margin);
 }
 
 NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
-LayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2) {
-  return LayoutEqual(constraint1, constraint2, 0);
+ELLayoutLess(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel *constraint2) {
+  return ELLayoutEqual(constraint1, constraint2, 0);
 }
 
 #endif /* EasyLayoutDefine_h */

@@ -7,7 +7,6 @@
 //
 
 #import "ELConstraintsMaker.h"
-#import "ELLayoutConstraintModel.h"
 #import <UIKit/UIKit.h>
 #import "ELLayoutAttributeProtocol.h"
 
