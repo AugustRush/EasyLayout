@@ -9,14 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "ELLayoutConstraintModel.h"
 
-@interface ELLayoutCombinationConstraintModel : NSObject
-
+@class ELLayoutCombinationConstraintModel;
 typedef ELLayoutCombinationConstraintModel * (^ELLayoutombinationLinkerBlock)(id viewOrNumber);
 typedef ELLayoutCombinationConstraintModel * (^ELLayoutCombinationOffsetBlock)(CGFloat offset);
 typedef ELLayoutCombinationOffsetBlock ELLayoutCombinationMutiplierBlock;
 typedef ELLayoutCombinationOffsetBlock ELLayoutCombinationPriorityBlock;
-
-@property (nonatomic, strong) NSMutableArray<ELLayoutConstraintModel *> *models;
+typedef NSLayoutConstraint *(^ELCombinationConstraintGetBlock)(NSUInteger index);
+/**
+ *  @brief class interface
+ */
+@interface ELLayoutCombinationConstraintModel : NSObject
 
 + (instancetype)combinationModelWithModels:(NSArray<ELLayoutConstraintModel *> *)models;
 
@@ -27,5 +29,7 @@ typedef ELLayoutCombinationOffsetBlock ELLayoutCombinationPriorityBlock;
 - (ELLayoutCombinationMutiplierBlock)multiplier;
 - (ELLayoutCombinationOffsetBlock)offset;
 - (ELLayoutCombinationPriorityBlock)priority;
+//get constraint
+- (ELCombinationConstraintGetBlock)constraint;
 
 @end

@@ -22,12 +22,12 @@
 
 
 @implementation ELLayoutCombinationConstraintModel {
-    
+    NSMutableArray<ELLayoutConstraintModel *> *_models;
 }
 
 + (instancetype)combinationModelWithModels:(NSArray<ELLayoutConstraintModel *> *)models {
     ELLayoutCombinationConstraintModel *combinationModel = [[ELLayoutCombinationConstraintModel alloc] init];
-    [combinationModel.models addObjectsFromArray:models];
+    [combinationModel->_models addObjectsFromArray:models];
     return combinationModel;
 }
 
@@ -94,6 +94,12 @@
             model.priority(priority);
         }
         return self;
+    };
+}
+
+- (ELCombinationConstraintGetBlock)constraint {
+    return ^(NSUInteger index) {
+        return _models[index].constraint();
     };
 }
 
