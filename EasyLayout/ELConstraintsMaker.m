@@ -10,6 +10,16 @@
 #import "UIView+EasyLayout.h"
 #import <objc/runtime.h>
 
+@interface UIView (ELPrivate)
+
+- (ELLayoutConstraintModel *)constraintWithAttribute:(NSLayoutAttribute)attribute;
+
+@end
+
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
+@implementation UIView (ELPrivate)
+@end
+
 @implementation ELConstraintsMaker {
   __weak UIView *_view;
   NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
@@ -159,97 +169,30 @@
     return [self modelWithAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 
+- (ELLayoutCombinationConstraintModel *)allEdges {
+    ELLayoutConstraintModel *top = [self modelWithAttribute:NSLayoutAttributeTop];
+    ELLayoutConstraintModel *left = [self modelWithAttribute:NSLayoutAttributeLeft];
+    ELLayoutConstraintModel *bottom = [self modelWithAttribute:NSLayoutAttributeBottom];
+    ELLayoutConstraintModel *right = [self modelWithAttribute:NSLayoutAttributeRight];
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[top,left,bottom,right]];
+}
+
+- (ELLayoutCombinationConstraintModel *)size {
+    ELLayoutConstraintModel *width = [self modelWithAttribute:NSLayoutAttributeWidth];
+    ELLayoutConstraintModel *height = [self modelWithAttribute:NSLayoutAttributeHeight];
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[width,height]];
+}
+
+- (ELLayoutCombinationConstraintModel *)centerXY {
+    ELLayoutConstraintModel *centerX = [self modelWithAttribute:NSLayoutAttributeCenterX];
+    ELLayoutConstraintModel *centerY = [self modelWithAttribute:NSLayoutAttributeCenterY];
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[centerX,centerY]];
+}
+
 #pragma mark - private methods
 
 - (ELLayoutConstraintModel *)modelWithAttribute:(NSLayoutAttribute)attribute {
-    ELLayoutConstraintModel *model = nil;
-    switch (attribute) {
-        case NSLayoutAttributeLeft: {
-            model = _view.left;
-            break;
-        }
-        case NSLayoutAttributeRight: {
-            model = _view.right;
-            break;
-        }
-        case NSLayoutAttributeTop: {
-            model = _view.top;
-            break;
-        }
-        case NSLayoutAttributeBottom: {
-            model = _view.bottom;
-            break;
-        }
-        case NSLayoutAttributeLeading: {
-            model = _view.leading;
-            break;
-        }
-        case NSLayoutAttributeTrailing: {
-            model = _view.trailing;
-            break;
-        }
-        case NSLayoutAttributeWidth: {
-            model = _view.width;
-            break;
-        }
-        case NSLayoutAttributeHeight: {
-            model = _view.height;
-            break;
-        }
-        case NSLayoutAttributeCenterX: {
-            model = _view.centerX;
-            break;
-        }
-        case NSLayoutAttributeCenterY: {
-            model = _view.centerY;
-            break;
-        }
-//        case NSLayoutAttributeLastBaseline:
-        case NSLayoutAttributeBaseline: {
-            model = _view.baseline;
-            break;
-        }
-        case NSLayoutAttributeFirstBaseline: {
-            model = _view.firstBaseline;
-            break;
-        }
-        case NSLayoutAttributeLeftMargin: {
-            model = _view.leftMargin;
-            break;
-        }
-        case NSLayoutAttributeRightMargin: {
-            model = _view.rightMargin;
-            break;
-        }
-        case NSLayoutAttributeTopMargin: {
-            model = _view.topMargin;
-            break;
-        }
-        case NSLayoutAttributeBottomMargin: {
-            model = _view.bottomMargin;
-            break;
-        }
-        case NSLayoutAttributeLeadingMargin: {
-            model = _view.leadingMargin;
-            break;
-        }
-        case NSLayoutAttributeTrailingMargin: {
-            model = _view.trailingMargin;
-            break;
-        }
-        case NSLayoutAttributeCenterXWithinMargins: {
-            model = _view.centerXWithMargins;
-            break;
-        }
-        case NSLayoutAttributeCenterYWithinMargins: {
-            model = _view.centerYWithMargins;
-            break;
-        }
-        case NSLayoutAttributeNotAnAttribute: {
-            break;
-        }
-    }
-    
+    ELLayoutConstraintModel *model = [_view constraintWithAttribute:attribute];
     if (model) {
         if (self.isUpdating) {
             [_updateModels addObject:model];

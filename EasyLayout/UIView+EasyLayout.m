@@ -9,6 +9,7 @@
 #import "UIView+EasyLayout.h"
 #import <objc/runtime.h>
 #import "ELLayoutConstraintModel.h"
+#import "ELLayoutCombinationConstraintModel.h"
 
 @implementation UIView (EasyLayout)
 
@@ -96,6 +97,18 @@
 
 - (ELLayoutConstraintModel *)centerYWithMargins {
     return [self constraintWithAttribute:NSLayoutAttributeCenterYWithinMargins];
+}
+
+- (ELLayoutCombinationConstraintModel *)allEdges {
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self top],[self left],[self bottom],[self right]]];
+}
+
+- (ELLayoutCombinationConstraintModel *)size {
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self width],[self height]]];
+}
+
+- (ELLayoutCombinationConstraintModel *)centerXY {
+    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self centerX],[self centerY]]];
 }
 
 #pragma mark - private methods

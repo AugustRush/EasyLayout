@@ -70,10 +70,6 @@
   return _constraint;
 }
 
-- (BOOL)isEqual:(id)object {
-  return NO;
-}
-
 #pragma mark - public methods
 
 - (ELLayoutLinkerBlock)equalTo {

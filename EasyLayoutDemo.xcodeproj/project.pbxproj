@@ -18,6 +18,7 @@
 		97A0D0681C525D5200EC0516 /* ELConstraintsMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0631C525D5200EC0516 /* ELConstraintsMaker.m */; };
 		97A0D0691C525D5200EC0516 /* ELLayoutConstraintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */; };
 		97A0D06A1C525D5200EC0516 /* UIView+EasyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */; };
+		97FBE9E41CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 97FBE9E31CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		97A0D0661C525D5200EC0516 /* UIView+EasyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasyLayout.h"; sourceTree = "<group>"; };
 		97A0D0671C525D5200EC0516 /* UIView+EasyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasyLayout.m"; sourceTree = "<group>"; };
 		97A0D06D1C53C77C00EC0516 /* ELLayoutAttributeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELLayoutAttributeProtocol.h; sourceTree = "<group>"; };
+		97FBE9E21CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELLayoutCombinationConstraintModel.h; sourceTree = "<group>"; };
+		97FBE9E31CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELLayoutCombinationConstraintModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				97A0D0631C525D5200EC0516 /* ELConstraintsMaker.m */,
 				97A0D0641C525D5200EC0516 /* ELLayoutConstraintModel.h */,
 				97A0D0651C525D5200EC0516 /* ELLayoutConstraintModel.m */,
+				97FBE9E21CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.h */,
+				97FBE9E31CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.m */,
 				97A0D06D1C53C77C00EC0516 /* ELLayoutAttributeProtocol.h */,
 			);
 			path = EasyLayout;
@@ -301,6 +306,7 @@
 			files = (
 				97A0D0681C525D5200EC0516 /* ELConstraintsMaker.m in Sources */,
 				977C9AC51BFC903B00106888 /* ViewController.m in Sources */,
+				97FBE9E41CA96BDA00FEF1FC /* ELLayoutCombinationConstraintModel.m in Sources */,
 				97A0D0691C525D5200EC0516 /* ELLayoutConstraintModel.m in Sources */,
 				977C9AC21BFC903B00106888 /* AppDelegate.m in Sources */,
 				97A0D06A1C525D5200EC0516 /* UIView+EasyLayout.m in Sources */,

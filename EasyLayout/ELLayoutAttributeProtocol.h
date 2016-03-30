@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class ELLayoutConstraintModel;
+@class ELLayoutCombinationConstraintModel;
 @protocol ELLayoutAttributeProtocol <NSObject>
 
 @required
@@ -34,5 +35,9 @@
 @property (nonatomic, readonly) ELLayoutConstraintModel *trailingMargin NS_AVAILABLE_IOS(8_0);
 @property (nonatomic, readonly) ELLayoutConstraintModel *centerXWithMargins NS_AVAILABLE_IOS(8_0);
 @property (nonatomic, readonly) ELLayoutConstraintModel *centerYWithMargins NS_AVAILABLE_IOS(8_0);
+//convenience
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *allEdges;
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *size;
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *centerXY;
 
 @end

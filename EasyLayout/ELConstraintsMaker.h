@@ -6,9 +6,10 @@
 //  Copyright © 2016 AugustRush. All rights reserved.
 //
 
-#import "ELLayoutConstraintModel.h"
 #import <UIKit/UIKit.h>
 #import "ELLayoutAttributeProtocol.h"
+#import "ELLayoutConstraintModel.h"
+#import "ELLayoutCombinationConstraintModel.h"
 
 @interface ELConstraintsMaker : NSObject<ELLayoutAttributeProtocol>
 
