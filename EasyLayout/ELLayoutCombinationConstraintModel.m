@@ -70,4 +70,31 @@
     };
 }
 
+- (ELLayoutCombinationMutiplierBlock)multiplier {
+    return ^(CGFloat mutiplier) {
+        for (ELLayoutConstraintModel *model in _models) {
+            model.multiplier(mutiplier);
+        }
+        return self;
+    };
+}
+
+- (ELLayoutCombinationOffsetBlock)offset {
+    return ^(CGFloat offset) {
+        for (ELLayoutConstraintModel *model in _models) {
+            model.offset(offset);
+        }
+        return self;
+    };
+}
+
+- (ELLayoutCombinationPriorityBlock)priority {
+    return ^(CGFloat priority) {
+        for (ELLayoutConstraintModel *model in _models) {
+            model.priority(priority);
+        }
+        return self;
+    };
+}
+
 @end

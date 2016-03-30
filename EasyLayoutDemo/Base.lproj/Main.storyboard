@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -36,6 +36,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XEd-3r-6uZ">
                                 <rect key="frame" x="95" y="269" width="131" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.57831778992197602" green="1" blue="0.46677104063908059" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="remake constraints"/>
                                 <connections>
                                     <action selector="remakeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXR-oS-ATp"/>
@@ -44,6 +45,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lbf-Rf-N91">
                                 <rect key="frame" x="96" y="327" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.21667318796923563" blue="0.1895688851651679" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="update constraints"/>
                                 <connections>
                                     <action selector="updateAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmX-8p-Jcx"/>
@@ -52,6 +54,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fyD-7d-nDT">
                                 <rect key="frame" x="109" y="393" width="103" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40032753694181833" green="1" blue="0.93601479668414544" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="rollback to first"/>
                                 <connections>
                                     <action selector="rollbackToFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N78-78-0mg"/>
@@ -60,6 +63,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4to-Wv-0By">
                                 <rect key="frame" x="129" y="439" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.93632190239463808" green="0.12854005563236759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="deactive "/>
                                 <connections>
                                     <action selector="deactiveAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4vy-ca-kkY"/>

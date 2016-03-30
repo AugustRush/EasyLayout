@@ -12,6 +12,9 @@
 @interface ELLayoutCombinationConstraintModel : NSObject
 
 typedef ELLayoutCombinationConstraintModel * (^ELLayoutombinationLinkerBlock)(id viewOrNumber);
+typedef ELLayoutCombinationConstraintModel * (^ELLayoutCombinationOffsetBlock)(CGFloat offset);
+typedef ELLayoutCombinationOffsetBlock ELLayoutCombinationMutiplierBlock;
+typedef ELLayoutCombinationOffsetBlock ELLayoutCombinationPriorityBlock;
 
 @property (nonatomic, strong) NSMutableArray<ELLayoutConstraintModel *> *models;
 
@@ -20,5 +23,9 @@ typedef ELLayoutCombinationConstraintModel * (^ELLayoutombinationLinkerBlock)(id
 - (ELLayoutombinationLinkerBlock)equalTo;
 - (ELLayoutombinationLinkerBlock)greaterThanOrEqualTo;
 - (ELLayoutombinationLinkerBlock)lessThanOrEqualTo;
+
+- (ELLayoutCombinationMutiplierBlock)multiplier;
+- (ELLayoutCombinationOffsetBlock)offset;
+- (ELLayoutCombinationPriorityBlock)priority;
 
 @end
