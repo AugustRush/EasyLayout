@@ -20,87 +20,131 @@
 
 @end
 
-
 @implementation ELLayoutCombinationConstraintModel {
-    NSMutableArray<ELLayoutConstraintModel *> *_models;
+  NSMutableArray<ELLayoutConstraintModel *> *_models;
 }
+@synthesize models = _models;
 
-+ (instancetype)combinationModelWithModels:(NSArray<ELLayoutConstraintModel *> *)models {
-    ELLayoutCombinationConstraintModel *combinationModel = [[ELLayoutCombinationConstraintModel alloc] init];
-    [combinationModel->_models addObjectsFromArray:models];
-    return combinationModel;
++ (instancetype)combinationModelWithModels:
+    (NSArray<ELLayoutConstraintModel *> *)models {
+  ELLayoutCombinationConstraintModel *combinationModel =
+      [[ELLayoutCombinationConstraintModel alloc] init];
+  [combinationModel->_models addObjectsFromArray:models];
+  return combinationModel;
 }
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
-        _models = @[].mutableCopy;
-    }
-    return self;
+  self = [super init];
+  if (self) {
+    _models = @[].mutableCopy;
+  }
+  return self;
 }
 
 - (void)dealloc {
-    NSLog(@"%@ dealloc",NSStringFromClass([self class]));
+  NSLog(@"%@ dealloc", NSStringFromClass([self class]));
 }
 
 - (ELLayoutombinationLinkerBlock)equalTo {
-    return ^ELLayoutCombinationConstraintModel * (id supportType) {
-        for (ELLayoutConstraintModel *model in _models) {
-            [model configurationWithSupportType:supportType relation:NSLayoutRelationEqual];
-        }
-        return self;
-    };
+  return ^ELLayoutCombinationConstraintModel *(id supportType) {
+    return
+        [self handleSupportType:supportType withRelation:NSLayoutRelationEqual];
+  };
 }
 
 - (ELLayoutombinationLinkerBlock)greaterThanOrEqualTo {
-    return ^ELLayoutCombinationConstraintModel * (id supportType) {
-        for (ELLayoutConstraintModel *model in _models) {
-            [model configurationWithSupportType:supportType relation:NSLayoutRelationGreaterThanOrEqual];
-        }
-        return self;
-    };
+  return ^ELLayoutCombinationConstraintModel *(id supportType) {
+    return [self handleSupportType:supportType
+                      withRelation:NSLayoutRelationGreaterThanOrEqual];
+  };
 }
 
 - (ELLayoutombinationLinkerBlock)lessThanOrEqualTo {
-    return ^ELLayoutCombinationConstraintModel * (id supportType) {
-        for (ELLayoutConstraintModel *model in _models) {
-            [model configurationWithSupportType:supportType relation:NSLayoutRelationLessThanOrEqual];
-        }
-        return self;
-    };
+  return ^ELLayoutCombinationConstraintModel *(id supportType) {
+    return [self handleSupportType:supportType
+                      withRelation:NSLayoutRelationLessThanOrEqual];
+  };
 }
 
-- (ELLayoutCombinationMutiplierBlock)multiplier {
-    return ^(CGFloat mutiplier) {
-        for (ELLayoutConstraintModel *model in _models) {
-            model.multiplier(mutiplier);
-        }
-        return self;
-    };
+- (ELLayoutCombinationMutiplierBlock)multipliers {
+  return ^(id mutiplier) {
+    if ([mutiplier isKindOfClass:[NSNumber class]]) {
+      for (ELLayoutConstraintModel *model in _models) {
+        model.multiplier([mutiplier floatValue]);
+      }
+    } else if ([mutiplier isKindOfClass:[NSArray class]]) {
+      NSArray *ms = mutiplier;
+      [_models
+          enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
+                                       NSUInteger idx, BOOL *_Nonnull stop) {
+            obj.multiplier([ms[idx] floatValue]);
+          }];
+    }
+    return self;
+  };
 }
 
-- (ELLayoutCombinationOffsetBlock)offset {
-    return ^(CGFloat offset) {
-        for (ELLayoutConstraintModel *model in _models) {
-            model.offset(offset);
-        }
-        return self;
-    };
+- (ELLayoutCombinationOffsetBlock)offsets {
+  return ^(id offset) {
+    if ([offset isKindOfClass:[NSNumber class]]) {
+      for (ELLayoutConstraintModel *model in _models) {
+        model.offset([offset floatValue]);
+      }
+    } else if ([offset isKindOfClass:[NSArray class]]) {
+      NSArray *ms = offset;
+      [_models
+          enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
+                                       NSUInteger idx, BOOL *_Nonnull stop) {
+            obj.offset([ms[idx] floatValue]);
+          }];
+    }
+    return self;
+  };
 }
 
-- (ELLayoutCombinationPriorityBlock)priority {
-    return ^(CGFloat priority) {
-        for (ELLayoutConstraintModel *model in _models) {
-            model.priority(priority);
-        }
-        return self;
-    };
+- (ELLayoutCombinationPriorityBlock)prioritys {
+  return ^(id priority) {
+    if ([priority isKindOfClass:[NSNumber class]]) {
+      for (ELLayoutConstraintModel *model in _models) {
+        model.priority([priority floatValue]);
+      }
+    } else if ([priority isKindOfClass:[NSArray class]]) {
+      NSArray *ms = priority;
+      [_models
+          enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
+                                       NSUInteger idx, BOOL *_Nonnull stop) {
+            obj.priority([ms[idx] floatValue]);
+          }];
+    }
+    return self;
+  };
 }
 
 - (ELCombinationConstraintGetBlock)constraint {
-    return ^(NSUInteger index) {
-        return _models[index].constraint();
-    };
+  return ^(NSUInteger index) {
+    return _models[index].constraint();
+  };
+}
+
+#pragma mark - private methods
+
+- (ELLayoutCombinationConstraintModel *)handleSupportType:(id)supportType
+                                             withRelation:
+                                                 (NSLayoutRelation)relation {
+  BOOL isSelfClass = [supportType isKindOfClass:[self class]];
+  BOOL isArray = [supportType isKindOfClass:[NSArray class]];
+  if (isSelfClass || isArray) {
+    NSArray *array = isArray ? supportType : [supportType models];
+    [_models enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
+                                          NSUInteger idx, BOOL *_Nonnull stop) {
+      [obj configurationWithSupportType:array[idx] relation:relation];
+    }];
+  } else {
+    for (ELLayoutConstraintModel *model in _models) {
+      [model configurationWithSupportType:supportType relation:relation];
+    }
+  }
+  return self;
 }
 
 @end

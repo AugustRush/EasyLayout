@@ -170,23 +170,26 @@
 }
 
 - (ELLayoutCombinationConstraintModel *)allEdges {
-    ELLayoutConstraintModel *top = [self modelWithAttribute:NSLayoutAttributeTop];
-    ELLayoutConstraintModel *left = [self modelWithAttribute:NSLayoutAttributeLeft];
-    ELLayoutConstraintModel *bottom = [self modelWithAttribute:NSLayoutAttributeBottom];
-    ELLayoutConstraintModel *right = [self modelWithAttribute:NSLayoutAttributeRight];
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[top,left,bottom,right]];
+    return self.combination(@[ELTop,ELLeft,ELBottom,ELRight]);
 }
 
 - (ELLayoutCombinationConstraintModel *)size {
-    ELLayoutConstraintModel *width = [self modelWithAttribute:NSLayoutAttributeWidth];
-    ELLayoutConstraintModel *height = [self modelWithAttribute:NSLayoutAttributeHeight];
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[width,height]];
+    return self.combination(@[ELWidth,ELHeight]);
 }
 
 - (ELLayoutCombinationConstraintModel *)centerXY {
-    ELLayoutConstraintModel *centerX = [self modelWithAttribute:NSLayoutAttributeCenterX];
-    ELLayoutConstraintModel *centerY = [self modelWithAttribute:NSLayoutAttributeCenterY];
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[centerX,centerY]];
+    return self.combination(@[ELCenterX,ELCenterY]);
+}
+
+- (ELConstraintCombination)combination {
+    return ^(NSArray *attributes) {
+        ELLayoutCombinationConstraintModel *combinationModel = [[ELLayoutCombinationConstraintModel alloc] init];
+        for (NSNumber *number in attributes) {
+            NSLayoutAttribute attribute = [number integerValue];
+            [combinationModel.models addObject:[self modelWithAttribute:attribute]];
+        }
+        return combinationModel;
+    };
 }
 
 #pragma mark - private methods

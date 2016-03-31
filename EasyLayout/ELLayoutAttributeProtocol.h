@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EasyLayoutDefine_unused.h"
 
 @class ELLayoutConstraintModel;
 @class ELLayoutCombinationConstraintModel;
@@ -39,5 +40,8 @@
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *allEdges;
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *size;
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *centerXY;
+
+typedef ELLayoutCombinationConstraintModel *(^ELConstraintCombination)(NSArray<NSNumber *> *attributes);
+@property (nonatomic, copy, readonly) ELConstraintCombination combination;
 
 @end

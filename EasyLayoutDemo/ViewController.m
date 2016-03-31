@@ -32,6 +32,7 @@
 
     [self initializeLayout];
     [self buttonsLayout];
+    
 }
 
 - (void)buttonsLayout {
@@ -41,12 +42,13 @@
     [self.updateButton makeConstraints:^(ELConstraintsMaker *make) {
         make.centerX.equalTo(@0);
         make.top.equalTo(self.remakeButton.bottom).offset(10);
-        make.size.equalTo(self.remakeButton).multiplier(1.5);
+        make.size.equalTo(self.remakeButton).multipliers(@1.5);
     }];
     [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
         make.centerX.equalTo(@0);
         make.top.equalTo(self.updateButton.bottom).offset(10);
-        make.size.equalTo(self.remakeButton).multiplier(2);
+//        make.size.equalTo(self.remakeButton).multiplier(2);
+        make.combination(@[ELWidth,ELHeight]).equalTo(self.remakeButton).multipliers(@2);
     }];
 }
 
@@ -72,23 +74,23 @@
   [_cView remakeConstraints:^(ELConstraintsMaker *make) {
     make.left.equalTo(_bview.right).offset(5);
     make.top.equalTo(_bview.top);
+      make.combination(@[ELLeft,ELTop]).equalTo(_bview.combination(@[ELRight,ELTop])).offsets(@[@5,@0]);
       make.size.equalTo(_testView);
   }];
 }
 
 - (IBAction)remakeAction:(id)sender {
   [_testView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.height.equalTo(@50);
     self.testRecordConstraint = make.centerX.equalTo(@0).constraint();
     make.centerY.equalTo(@0);
-    make.width.equalTo(@200);
+      make.size.equalTo(@[@200,@100]);
   }];
   [self layoutPerformAnimation];
 }
 
 - (IBAction)updateAction:(id)sender {
   [_testView updateConstraints:^(ELConstraintsMaker *make) {
-      make.size.equalTo(self.view);
+      make.size.equalTo(self.view).offsets(@-10);
   }];
 
   [self layoutPerformAnimation];

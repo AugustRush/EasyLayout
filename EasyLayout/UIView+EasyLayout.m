@@ -100,15 +100,26 @@
 }
 
 - (ELLayoutCombinationConstraintModel *)allEdges {
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self top],[self left],[self bottom],[self right]]];
+    return self.combination(@[ELTop,ELLeft,ELBottom,ELRight]);
 }
 
 - (ELLayoutCombinationConstraintModel *)size {
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self width],[self height]]];
+    return self.combination(@[ELWidth,ELHeight]);
 }
 
 - (ELLayoutCombinationConstraintModel *)centerXY {
-    return [ELLayoutCombinationConstraintModel combinationModelWithModels:@[[self centerX],[self centerY]]];
+    return self.combination(@[ELCenterX,ELCenterY]);
+}
+
+- (ELConstraintCombination)combination {
+    return ^(NSArray *attributes) {
+        ELLayoutCombinationConstraintModel *combinationModel = [[ELLayoutCombinationConstraintModel alloc] init];
+        for (NSNumber *number in attributes) {
+            NSLayoutAttribute attribute = [number integerValue];
+            [combinationModel.models addObject:[self constraintWithAttribute:attribute]];
+        }
+        return combinationModel;
+    };
 }
 
 #pragma mark - private methods
