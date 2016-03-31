@@ -16,40 +16,41 @@
 @property(weak, nonatomic) IBOutlet UIView *bview;
 @property(weak, nonatomic) IBOutlet UIView *cView;
 
-@property (weak, nonatomic) IBOutlet UIButton *remakeButton;
-@property (weak, nonatomic) IBOutlet UIButton *updateButton;
-@property (weak, nonatomic) IBOutlet UIButton *rollbackButton;
-@property (weak, nonatomic) IBOutlet UIButton *deactiveButton;
+@property(weak, nonatomic) IBOutlet UIButton *remakeButton;
+@property(weak, nonatomic) IBOutlet UIButton *updateButton;
+@property(weak, nonatomic) IBOutlet UIButton *rollbackButton;
+@property(weak, nonatomic) IBOutlet UIButton *deactiveButton;
 
-@property (nonatomic, weak) NSLayoutConstraint *testRecordConstraint;
+@property(nonatomic, weak) NSLayoutConstraint *testRecordConstraint;
 
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-    [self initializeLayout];
-    [self buttonsLayout];
-    
+  [self initializeLayout];
+  [self buttonsLayout];
 }
 
 - (void)buttonsLayout {
-    [self.remakeButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.centerXY.equalTo(@0);
-    }];
-    [self.updateButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.centerX.equalTo(@0);
-        make.top.equalTo(self.remakeButton.bottom).offset(10);
-        make.size.equalTo(self.remakeButton).multipliers(@1.5);
-    }];
-    [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
-        make.centerX.equalTo(@0);
-        make.top.equalTo(self.updateButton.bottom).offset(10);
-//        make.size.equalTo(self.remakeButton).multiplier(2);
-        make.combination(@[ELWidth,ELHeight]).equalTo(self.remakeButton).multipliers(@2);
-    }];
+  [self.remakeButton makeConstraints:^(ELConstraintsMaker *make) {
+    make.centerXY.equalTo(@0);
+  }];
+  [self.updateButton makeConstraints:^(ELConstraintsMaker *make) {
+    make.centerX.equalTo(@0);
+    make.top.equalTo(self.remakeButton.bottom).offset(10);
+    make.size.equalTo(self.remakeButton).multipliers(@1.5);
+  }];
+  [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
+    make.centerX.equalTo(@0);
+    make.top.equalTo(self.updateButton.bottom).offset(10);
+    //        make.size.equalTo(self.remakeButton).multiplier(2);
+    make.combination(@[ ELWidth, ELHeight ])
+        .equalTo(self.remakeButton)
+        .multipliers(@2);
+  }];
 }
 
 - (void)initializeLayout {
@@ -62,20 +63,19 @@
 
   [_aView remakeConstraints:^(ELConstraintsMaker *make) {
     make.left.equalTo(_testView.right).offset(5);
-    make.top.equalTo(_testView);
-    make.size.equalTo(_testView);
+    make.combination(@[ ELTop, ELWidth, ELHeight ]).equalTo(_testView);
   }];
 
   [_bview remakeConstraints:^(ELConstraintsMaker *make) {
     make.left.equalTo(_testView);
     make.top.equalTo(_testView.bottom).offset(5);
-      make.size.equalTo(_testView);
+    make.size.equalTo(_testView);
   }];
   [_cView remakeConstraints:^(ELConstraintsMaker *make) {
-    make.left.equalTo(_bview.right).offset(5);
-    make.top.equalTo(_bview.top);
-      make.combination(@[ELLeft,ELTop]).equalTo(_bview.combination(@[ELRight,ELTop])).offsets(@[@5,@0]);
-      make.size.equalTo(_testView);
+    make.combination(@[ ELLeft, ELTop ])
+        .equalTo(@[ _bview.right, _aView.bottom ])
+        .offsets(@[ @10, @0 ]);
+    make.size.equalTo(_testView);
   }];
 }
 
@@ -83,14 +83,14 @@
   [_testView remakeConstraints:^(ELConstraintsMaker *make) {
     self.testRecordConstraint = make.centerX.equalTo(@0).constraint();
     make.centerY.equalTo(@0);
-      make.size.equalTo(@[@200,@100]);
+    make.size.equalTo(@[ @100, @100 ]).constraint(1);
   }];
   [self layoutPerformAnimation];
 }
 
 - (IBAction)updateAction:(id)sender {
   [_testView updateConstraints:^(ELConstraintsMaker *make) {
-      make.size.equalTo(self.view).offsets(@-10);
+    make.size.equalTo(self.view).offsets(@-10);
   }];
 
   [self layoutPerformAnimation];
@@ -109,7 +109,7 @@
 }
 
 - (IBAction)deactiveAction:(id)sender {
-    [self.testRecordConstraint setActive:NO];
+  [self.testRecordConstraint setActive:NO];
 }
 
 - (void)didReceiveMemoryWarning {

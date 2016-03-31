@@ -77,7 +77,8 @@
       [_models
           enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
                                        NSUInteger idx, BOOL *_Nonnull stop) {
-            obj.multiplier([ms[idx] floatValue]);
+            CGFloat m = ms.count > idx ? [ms[idx] floatValue] : 0.0;
+            obj.multiplier(m);
           }];
     }
     return self;
@@ -95,7 +96,8 @@
       [_models
           enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
                                        NSUInteger idx, BOOL *_Nonnull stop) {
-            obj.offset([ms[idx] floatValue]);
+            CGFloat m = ms.count > idx ? [ms[idx] floatValue] : 0.0;
+            obj.offset(m);
           }];
     }
     return self;
@@ -113,7 +115,8 @@
       [_models
           enumerateObjectsUsingBlock:^(ELLayoutConstraintModel *_Nonnull obj,
                                        NSUInteger idx, BOOL *_Nonnull stop) {
-            obj.priority([ms[idx] floatValue]);
+            CGFloat m = ms.count > idx ? [ms[idx] floatValue] : 0.0;
+            obj.priority(m);
           }];
     }
     return self;

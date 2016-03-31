@@ -30,6 +30,7 @@ typedef NSLayoutConstraint *(^ELCombinationConstraintGetBlock)(NSUInteger index)
 - (ELLayoutombinationLinkerBlock)greaterThanOrEqualTo;
 - (ELLayoutombinationLinkerBlock)lessThanOrEqualTo;
 
+//paramater should be an NSNumber or NSArray
 - (ELLayoutCombinationMutiplierBlock)multipliers;
 - (ELLayoutCombinationOffsetBlock)offsets;
 - (ELLayoutCombinationPriorityBlock)prioritys;
