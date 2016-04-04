@@ -36,8 +36,13 @@
 @property (nonatomic, readonly) ELLayoutConstraintModel *trailingMargin NS_AVAILABLE_IOS(8_0);
 @property (nonatomic, readonly) ELLayoutConstraintModel *centerXWithMargins NS_AVAILABLE_IOS(8_0);
 @property (nonatomic, readonly) ELLayoutConstraintModel *centerYWithMargins NS_AVAILABLE_IOS(8_0);
-//convenience
+/**
+ *  @brief some convenience combination attribute
+ * you can get the real constraint with correct index from constraints array
+ */
+//** top , left , bottom , right
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *allEdges;
+// width, height
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *size;
 @property (nonatomic, readonly) ELLayoutCombinationConstraintModel *centerXY;
 
