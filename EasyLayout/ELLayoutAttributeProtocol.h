@@ -14,37 +14,37 @@
 @protocol ELLayoutAttributeProtocol <NSObject>
 
 @required
-@property (nonatomic, readonly) ELLayoutConstraintModel *left;
-@property (nonatomic, readonly) ELLayoutConstraintModel *right;
-@property (nonatomic, readonly) ELLayoutConstraintModel *top;
-@property (nonatomic, readonly) ELLayoutConstraintModel *bottom;
-@property (nonatomic, readonly) ELLayoutConstraintModel *centerX;
-@property (nonatomic, readonly) ELLayoutConstraintModel *centerY;
-@property (nonatomic, readonly) ELLayoutConstraintModel *width;
-@property (nonatomic, readonly) ELLayoutConstraintModel *height;
-@property (nonatomic, readonly) ELLayoutConstraintModel *leading;
-@property (nonatomic, readonly) ELLayoutConstraintModel *trailing;
-@property (nonatomic, readonly) ELLayoutConstraintModel *baseline;
-@property (nonatomic, readonly) ELLayoutConstraintModel *lastBaseline;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELLeft;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELRight;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELTop;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELBottom;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELCenterX;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELCenterY;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELWidth;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELHeight;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELLeading;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELTrailing;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELBaseline;
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELLastBaseline;
 //available on ios 8_0
-@property (nonatomic, readonly) ELLayoutConstraintModel *firstBaseline NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *leftMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *rightMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *topMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *bottomMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *leadingMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *trailingMargin NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *centerXWithMargins NS_AVAILABLE_IOS(8_0);
-@property (nonatomic, readonly) ELLayoutConstraintModel *centerYWithMargins NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELFirstBaseline NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELLeftMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELRightMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELTopMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELBottomMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELLeadingMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELTrailingMargin NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELCenterXWithMargins NS_AVAILABLE_IOS(8_0);
+@property (nonatomic, readonly) ELLayoutConstraintModel *ELCenterYWithMargins NS_AVAILABLE_IOS(8_0);
 /**
  *  @brief some convenience combination attribute
  * you can get the real constraint with correct index from constraints array
  */
 //** top , left , bottom , right
-@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *allEdges;
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *ELAllEdges;
 // width, height
-@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *size;
-@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *centerXY;
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *ELSize;
+@property (nonatomic, readonly) ELLayoutCombinationConstraintModel *ELCenter;
 
 typedef ELLayoutCombinationConstraintModel *(^ELConstraintCombination)(NSArray<NSNumber *> *attributes);
 @property (nonatomic, copy, readonly) ELConstraintCombination combination;

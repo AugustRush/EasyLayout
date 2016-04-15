@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ELLayoutConstraintModel.h"
 
-#define ELNumbers(a,...)
-
 @class ELLayoutCombinationConstraintModel;
 typedef ELLayoutCombinationConstraintModel * (^ELLayoutombinationLinkerBlock)(id viewOrNumber);
 typedef ELLayoutCombinationConstraintModel * (^ELLayoutCombinationOffsetBlock)(id offsets);

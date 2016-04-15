@@ -15,100 +15,100 @@
 
 #pragma mark - attributes 
 
-- (ELLayoutConstraintModel *)left {
+- (ELLayoutConstraintModel *)ELLeft {
   return [self constraintWithAttribute:NSLayoutAttributeLeft];
 }
 
-- (ELLayoutConstraintModel *)right {
+- (ELLayoutConstraintModel *)ELRight {
   return [self constraintWithAttribute:NSLayoutAttributeRight];
 }
 
-- (ELLayoutConstraintModel *)top {
+- (ELLayoutConstraintModel *)ELTop {
   return [self constraintWithAttribute:NSLayoutAttributeTop];
 }
 
-- (ELLayoutConstraintModel *)bottom {
+- (ELLayoutConstraintModel *)ELBottom {
   return [self constraintWithAttribute:NSLayoutAttributeBottom];
 }
 
-- (ELLayoutConstraintModel *)centerX {
+- (ELLayoutConstraintModel *)ELCenterX {
   return [self constraintWithAttribute:NSLayoutAttributeCenterX];
 }
 
-- (ELLayoutConstraintModel *)centerY {
+- (ELLayoutConstraintModel *)ELCenterY {
   return [self constraintWithAttribute:NSLayoutAttributeCenterY];
 }
 
-- (ELLayoutConstraintModel *)width {
+- (ELLayoutConstraintModel *)ELWidth {
   return [self constraintWithAttribute:NSLayoutAttributeWidth];
 }
 
-- (ELLayoutConstraintModel *)height {
+- (ELLayoutConstraintModel *)ELHeight {
   return [self constraintWithAttribute:NSLayoutAttributeHeight];
 }
 
-- (ELLayoutConstraintModel *)leading {
+- (ELLayoutConstraintModel *)ELLeading {
     return [self constraintWithAttribute:NSLayoutAttributeLeading];
 }
 
-- (ELLayoutConstraintModel *)trailing {
+- (ELLayoutConstraintModel *)ELTrailing {
     return [self constraintWithAttribute:NSLayoutAttributeTrailing];
 }
 
-- (ELLayoutConstraintModel *)baseline {
+- (ELLayoutConstraintModel *)ELBaseline {
     return [self constraintWithAttribute:NSLayoutAttributeBaseline];
 }
 
-- (ELLayoutConstraintModel *)firstBaseline {
+- (ELLayoutConstraintModel *)ELFirstBaseline {
     return [self constraintWithAttribute:NSLayoutAttributeFirstBaseline];
 }
 
-- (ELLayoutConstraintModel *)lastBaseline {
+- (ELLayoutConstraintModel *)ELLastBaseline {
     return [self constraintWithAttribute:NSLayoutAttributeLastBaseline];
 }
 
-- (ELLayoutConstraintModel *)leftMargin {
+- (ELLayoutConstraintModel *)ELLeftMargin {
     return [self constraintWithAttribute:NSLayoutAttributeLeftMargin];
 }
 
-- (ELLayoutConstraintModel *)rightMargin {
+- (ELLayoutConstraintModel *)ELRightMargin {
     return [self constraintWithAttribute:NSLayoutAttributeRightMargin];
 }
 
-- (ELLayoutConstraintModel *)topMargin {
+- (ELLayoutConstraintModel *)ELTopMargin {
     return [self constraintWithAttribute:NSLayoutAttributeTopMargin];
 }
 
-- (ELLayoutConstraintModel *)bottomMargin {
+- (ELLayoutConstraintModel *)ELBottomMargin {
     return [self constraintWithAttribute:NSLayoutAttributeBottomMargin];
 }
 
-- (ELLayoutConstraintModel *)leadingMargin {
+- (ELLayoutConstraintModel *)ELLeadingMargin {
     return [self constraintWithAttribute:NSLayoutAttributeLeadingMargin];
 }
 
-- (ELLayoutConstraintModel *)trailingMargin {
+- (ELLayoutConstraintModel *)ELTrailingMargin {
     return [self constraintWithAttribute:NSLayoutAttributeTrailingMargin];
 }
 
-- (ELLayoutConstraintModel *)centerXWithMargins {
+- (ELLayoutConstraintModel *)ELCenterXWithMargins {
     return [self constraintWithAttribute:NSLayoutAttributeCenterXWithinMargins];
 }
 
-- (ELLayoutConstraintModel *)centerYWithMargins {
+- (ELLayoutConstraintModel *)ELCenterYWithMargins {
     return [self constraintWithAttribute:NSLayoutAttributeCenterYWithinMargins];
 }
 
-- (ELLayoutCombinationConstraintModel *)allEdges {
-    return self.combination(@[ELTop,ELLeft,ELBottom,ELRight]);
+- (ELLayoutCombinationConstraintModel *)ELAllEdges {
+    return self.combination(@[ELCTop,ELCLeft,ELCBottom,ELCRight]);
 }
 
-- (ELLayoutCombinationConstraintModel *)size {
-    return self.combination(@[ELWidth,ELHeight]);
+- (ELLayoutCombinationConstraintModel *)ELSize {
+    return self.combination(@[ELCWidth,ELCHeight]);
 }
 
-- (ELLayoutCombinationConstraintModel *)centerXY {
-    return self.combination(@[ELCenterX,ELCenterY]);
+- (ELLayoutCombinationConstraintModel *)ELCenter {
+    return self.combination(@[ELCCenterX,ELCCenterY]);
 }
 
 - (ELConstraintCombination)combination {
