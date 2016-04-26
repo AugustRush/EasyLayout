@@ -9,7 +9,7 @@
 #ifndef EasyLayoutDefine_h
 #define EasyLayoutDefine_h
 
-#define ELConstraint ELC
+#define ELAttribute ELC
 
 #define ELCLeft @(NSLayoutAttributeLeft)
 #define ELCRight @(NSLayoutAttributeRight)

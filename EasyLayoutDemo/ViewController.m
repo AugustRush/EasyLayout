@@ -46,7 +46,6 @@
   [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
     make.ELCenterX.equalTo(@0);
     make.ELTop.equalTo(self.updateButton.ELBottom).offset(10);
-    //        make.size.equalTo(self.remakeButton).multiplier(2);
     make.combination(@[ ELCWidth, ELCHeight ])
         .equalTo(self.remakeButton)
         .multipliers(@2);
@@ -74,7 +73,7 @@
   [_cView remakeConstraints:^(ELConstraintsMaker *make) {
     make.combination(@[ ELCLeft, ELCTop ])
         .equalTo(@[ _bview.ELRight, _aView.ELBottom ])
-        .offsets(@[ @10, @0 ]);
+        .offsets(@[ @5, @5 ]);
     make.ELSize.equalTo(_testView);
   }];
 }
