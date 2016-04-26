@@ -1,8 +1,11 @@
 #EasyLayout
 * This is an library for AutoLayout like Masonry but more. Just for fun and self-use.
 
+## Demo GIf
+<img src="https://github.com/AugustRush/EasyLayout/blob/develop/demo.gif" width="320">
+
 ## How to use
-* A View's left equal to B View's right with Margin 10.</br>
+##### A View's left equal to B View's right with Margin 10.</br>
 
 ```
 [AView makeConstraints:^(ELConstraintsMaker *make) {
@@ -11,7 +14,7 @@
 
 ```
 
-* A View's centerX and centerY equal to superView's centerX and  centerY.</br>
+##### A View's centerX and centerY equal to superView's centerX and  centerY.</br>
 
 ```
 [AView makeConstraints:^(ELConstraintsMaker *make) {
@@ -19,7 +22,7 @@
 }];
 
 ```
-* A View's all edges equal to superView's all edges with margin 5.</br>
+##### A View's all edges equal to superView's all edges with margin 5.</br>
 
 ```
 [AView makeConstraints:^(ELConstraintsMaker *make) {
@@ -43,9 +46,9 @@
 ```
 
 ## Next to do
-* A tutorial for how to build it
-* More convinience class (linear layout ?)
-* Swift Version
+##### A tutorial for how to build it
+##### More convinience class (linear layout ?)
+##### Swift Version
 
 ## License (MIT)
 ```
