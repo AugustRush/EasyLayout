@@ -1,5 +1,8 @@
 #EasyLayout
-* This is an library for AutoLayout like Masonry but more. Just for fun and self-use.
+* Easy to use AutoLayout.
+
+## swift version
+* https://github.com/AugustRush/EasyLayout-Swift
 
 ## Demo GIf
 <img src="https://github.com/AugustRush/EasyLayout/blob/develop/demo.gif" width="320">
@@ -48,7 +51,6 @@
 ## Next to do
 ##### A tutorial for how to build it
 ##### More convinience class (linear layout ?)
-##### Swift Version
 
 ## License (MIT)
 ```
