@@ -22,8 +22,8 @@
 
 @implementation ELConstraintsMaker {
   __weak UIView *_view;
+  NSHashTable<ELLayoutConstraintModel *> *_tempModels;
   NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
-  NSHashTable<ELLayoutConstraintModel *> *_updateModels;
   NSHashTable<NSLayoutConstraint *> *_constraints;
 }
 
@@ -33,8 +33,8 @@
   self = [super init];
   if (self) {
     _view = view;
+    _tempModels = [NSHashTable weakObjectsHashTable];
     _models = @{}.mutableCopy;
-    _updateModels = [NSHashTable weakObjectsHashTable];
     _constraints = [NSHashTable weakObjectsHashTable];
   }
   return self;
@@ -43,20 +43,23 @@
 #pragma mark - public methods
 
 - (void)install {
-  for (ELLayoutConstraintModel *model in _models.allValues) {
+  for (ELLayoutConstraintModel *model in _tempModels) {
     NSLayoutConstraint *constraint = model.constraint();
     [constraint setActive:YES];
+    [_models setObject:model forKey:[self identifierWithModel:model]];
     [_constraints addObject:constraint];
   }
+  [_tempModels removeAllObjects];
 }
 
 - (void)removeAll {
+  [_tempModels removeAllObjects];
   [_models removeAllObjects];
   [NSLayoutConstraint deactivateConstraints:_constraints.allObjects];
 }
 
 - (void)update {
-  for (ELLayoutConstraintModel *model in _updateModels) {
+  for (ELLayoutConstraintModel *model in _tempModels) {
     NSString *identifier = [self identifierWithModel:model];
     ELLayoutConstraintModel *existingModel = _models[identifier];
     if (existingModel != nil) {
@@ -194,14 +197,11 @@
 
 #pragma mark - private methods
 
+//should be called on constrint model has been fullfill
 - (ELLayoutConstraintModel *)modelWithAttribute:(NSLayoutAttribute)attribute {
     ELLayoutConstraintModel *model = [_view constraintWithAttribute:attribute];
     if (model) {
-        if (self.isUpdating) {
-            [_updateModels addObject:model];
-        } else {
-            [_models setObject:model forKey:[self identifierWithModel:model]];
-        }
+        [_tempModels addObject:model];
     }
     return model;
 }
