@@ -22,7 +22,7 @@
 
 @implementation ELConstraintsMaker {
   __weak UIView *_view;
-  NSHashTable<ELLayoutConstraintModel *> *_tempModels;
+  NSMutableSet<ELLayoutConstraintModel *> *_tempModels;
   NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
   NSHashTable<NSLayoutConstraint *> *_constraints;
 }
@@ -33,7 +33,7 @@
   self = [super init];
   if (self) {
     _view = view;
-    _tempModels = [NSHashTable weakObjectsHashTable];
+    _tempModels = [NSMutableSet set];
     _models = @{}.mutableCopy;
     _constraints = [NSHashTable weakObjectsHashTable];
   }
@@ -207,16 +207,16 @@
 }
 
 - (NSString *)identifierWithModel:(ELLayoutConstraintModel *)model {
-  NSMutableString *string = [NSMutableString string];
-  [string appendFormat:@"%p/", model.view];
-  [string appendFormat:@"%ld/", (long)model.attribute];
+    NSMutableString *string = [NSMutableString string];
+    [string appendFormat:@"%p/", model.view];
+    [string appendFormat:@"%ld/", (long)model.attribute];
     //if relationship is equal, this should be only one on common
-  if (model.relation != NSLayoutRelationEqual) {
-    [string appendFormat:@"%ld/", (long)model.relation];
-    [string appendFormat:@"%p/", model.toView];
-    [string appendFormat:@"%ld/", (long)model.toAttribute];
-  }
-  return string.copy;
+    if (model.relation != NSLayoutRelationEqual) {
+        [string appendFormat:@"%ld/", (long)model.relation];
+        [string appendFormat:@"%p/", model.toView];
+        [string appendFormat:@"%ld/", (long)model.toAttribute];
+    }
+    return string.copy;
 }
 
 @end

@@ -50,6 +50,12 @@
         .equalTo(self.remakeButton)
         .multipliers(@2);
   }];
+    
+    [self.deactiveButton makeConstraints:^(ELConstraintsMaker *make) {
+        make.ELCenterX.equalTo(@0);
+        make.ELTop.equalTo(self.rollbackButton.ELBottom).offset(10);
+        make.ELSize.equalTo(self.rollbackButton).multipliers(@[@1,@2]);
+    }];
 }
 
 - (void)initializeLayout {
