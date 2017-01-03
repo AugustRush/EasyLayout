@@ -30,41 +30,62 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-//  [self initializeLayout];
+  [self initializeLayout];
   [self buttonsLayout];
 }
 
 - (void)buttonsLayout {
     
+    // landscape layout
     [self.remakeButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
-        make.ELCenter.equalTo(@0);
-        make.ELSize.equalTo(@[@100,@100]);
+        make.ELLeft.equalTo(@0);
+        make.ELBottom.equalTo(@0);
+        make.ELHeight.equalTo(@100);
     } forOrientation:ELInterfaceOritationLandscape];
     
+    [self.updateButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELLeft.equalTo(self.remakeButton.ELRight).offset(5);
+        make.ELBottom.equalTo(self.remakeButton);
+        make.ELHeight.equalTo(self.remakeButton);
+    } forOrientation:ELInterfaceOritationLandscape];
+    
+    [self.rollbackButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELLeft.equalTo(self.updateButton.ELRight).offset(5);
+        make.ELBottom.equalTo(self.remakeButton);
+        make.ELHeight.equalTo(self.remakeButton);
+    } forOrientation:ELInterfaceOritationLandscape];
+
+    [self.deactiveButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELLeft.equalTo(self.rollbackButton.ELRight).offset(5);
+        make.ELBottom.equalTo(self.remakeButton);
+        make.ELHeight.equalTo(self.remakeButton);
+    } forOrientation:ELInterfaceOritationLandscape];
+    
+    // portrait layout
     [self.remakeButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
         make.ELCenter.equalTo(@0);
-        make.ELSize.equalTo(@[@20,@20]);
     } forOrientation:ELInterfaceOritationPortrait];
 
     
-//    [self.updateButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELCenterX.equalTo(@0);
-//        make.ELTop.equalTo(self.remakeButton.ELBottom).offset(10);
-//        make.ELSize.equalTo(self.remakeButton).multipliers(@1.5);
-//    }];
-//    [self.rollbackButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELCenterX.equalTo(@0);
-//        make.ELTop.equalTo(self.updateButton.ELBottom).offset(10);
-//        make.combination(@[ ELCWidth, ELCHeight ])
-//        .equalTo(self.remakeButton)
-//        .multipliers(@2);
-//    }];
-//    
-//    [self.deactiveButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELCenterX.equalTo(@0);
-//        make.ELTop.equalTo(self.rollbackButton.ELBottom).offset(10);
-//        make.ELSize.equalTo(self.rollbackButton).multipliers(@[@1,@2]);
-//    }];
+    [self.updateButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELCenterX.equalTo(@0);
+        make.ELTop.equalTo(self.remakeButton.ELBottom).offset(10);
+        make.ELSize.equalTo(self.remakeButton).multipliers(@1.5);
+    } forOrientation:ELInterfaceOritationPortrait];
+    
+    [self.rollbackButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELCenterX.equalTo(@0);
+        make.ELTop.equalTo(self.updateButton.ELBottom).offset(10);
+        make.combination(@[ ELCWidth, ELCHeight ])
+        .equalTo(self.remakeButton)
+        .multipliers(@2);
+    } forOrientation:ELInterfaceOritationPortrait];
+    
+    [self.deactiveButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELCenterX.equalTo(@0);
+        make.ELTop.equalTo(self.rollbackButton.ELBottom).offset(10);
+        make.ELSize.equalTo(self.rollbackButton).multipliers(@[@1,@2]);
+    } forOrientation:ELInterfaceOritationPortrait];
 }
 
 - (void)initializeLayout {

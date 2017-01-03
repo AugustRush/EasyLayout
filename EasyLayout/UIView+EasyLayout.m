@@ -242,8 +242,14 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
 
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    if (orientation == ELInterfaceOritationAll) {
+        [[self _makerManager].portraitMaker removeAll];
+        [[self _makerManager].landscapeMaker removeAll];
+    } else {
+        ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
+        [maker removeAll];
+    }
     ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
-    [maker removeAll];
     block(maker);
     [maker update];
 }
