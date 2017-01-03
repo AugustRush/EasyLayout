@@ -15,8 +15,7 @@
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithView:(UIView *)view;
-
-- (void)install;
+//
 - (void)removeAll;
 - (void)update;
 
