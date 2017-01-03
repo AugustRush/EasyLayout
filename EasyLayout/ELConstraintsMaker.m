@@ -216,8 +216,9 @@
 }
 
 - (ELInterfaceOritation)currentInterfaceOrientation {
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (UIDeviceOrientationIsPortrait(orientation)) {
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
         return ELInterfaceOritationPortrait;
     }
     return ELInterfaceOritationLandscape;

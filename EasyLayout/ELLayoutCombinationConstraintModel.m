@@ -41,10 +41,6 @@
   return self;
 }
 
-- (void)dealloc {
-  NSLog(@"%@ dealloc", NSStringFromClass([self class]));
-}
-
 - (ELLayoutombinationLinkerBlock)equalTo {
   return ^ELLayoutCombinationConstraintModel *(id supportType) {
     return
