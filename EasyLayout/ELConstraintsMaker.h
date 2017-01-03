@@ -13,8 +13,6 @@
 
 @interface ELConstraintsMaker : NSObject<ELLayoutAttributeProtocol>
 
-@property(nonatomic, assign) BOOL isUpdating;
-
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithView:(UIView *)view;
 

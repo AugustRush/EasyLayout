@@ -12,8 +12,7 @@
 
 @interface UIView (EasyLayout)<ELLayoutAttributeProtocol>
 
-- (void)makeConstraints:(void (^)(ELConstraintsMaker *make))block;
+- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *make))block;
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *make))block;
-- (void)updateConstraints:(void (^)(ELConstraintsMaker *make))block;
 
 @end

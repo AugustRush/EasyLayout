@@ -42,16 +42,6 @@
 
 #pragma mark - public methods
 
-- (void)install {
-  for (ELLayoutConstraintModel *model in _tempModels) {
-    NSLayoutConstraint *constraint = model.constraint();
-    [constraint setActive:YES];
-    [_models setObject:model forKey:[self identifierWithModel:model]];
-    [_constraints addObject:constraint];
-  }
-  [_tempModels removeAllObjects];
-}
-
 - (void)removeAll {
   [_tempModels removeAllObjects];
   [_models removeAllObjects];
@@ -59,23 +49,25 @@
 }
 
 - (void)update {
-  for (ELLayoutConstraintModel *model in _tempModels) {
-    NSString *identifier = [self identifierWithModel:model];
-    ELLayoutConstraintModel *existingModel = _models[identifier];
-    if (existingModel != nil) {
-        //reference view and ratio should be same
-      if (model.toView == existingModel.toView &&
-          model.ratio == existingModel.ratio) {
-        existingModel.constraint().constant = model.constant;
-      } else {
-        // remove exsiting and install new
-        [existingModel.constraint() setActive:NO];
-        [self installConstraintWithModel:model identifier:identifier];
-      }
-    } else {
-      [self installConstraintWithModel:model identifier:identifier];
+    for (ELLayoutConstraintModel *model in _tempModels) {
+        NSString *identifier = [self identifierWithModel:model];
+        ELLayoutConstraintModel *existingModel = _models[identifier];
+        if (existingModel != nil) {
+            //reference view and ratio should be same
+            if (model.toView == existingModel.toView &&
+                model.ratio == existingModel.ratio) {
+                existingModel.constraint().constant = model.constant;
+            } else {
+                // remove exsiting and install new
+                [existingModel.constraint() setActive:NO];
+                [self installConstraintWithModel:model identifier:identifier];
+            }
+        } else {
+            [self installConstraintWithModel:model identifier:identifier];
+        }
     }
-  }
+    // REMOVE ALL TEMPLE MODELS
+    [_tempModels removeAllObjects];
 }
 
 - (void)installConstraintWithModel:(ELLayoutConstraintModel *)model

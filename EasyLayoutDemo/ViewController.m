@@ -35,15 +35,15 @@
 }
 
 - (void)buttonsLayout {
-  [self.remakeButton makeConstraints:^(ELConstraintsMaker *make) {
+  [self.remakeButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
     make.ELCenter.equalTo(@0);
   }];
-  [self.updateButton makeConstraints:^(ELConstraintsMaker *make) {
+  [self.updateButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
     make.ELCenterX.equalTo(@0);
     make.ELTop.equalTo(self.remakeButton.ELBottom).offset(10);
     make.ELSize.equalTo(self.remakeButton).multipliers(@1.5);
   }];
-  [self.rollbackButton makeConstraints:^(ELConstraintsMaker *make) {
+  [self.rollbackButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
     make.ELCenterX.equalTo(@0);
     make.ELTop.equalTo(self.updateButton.ELBottom).offset(10);
     make.combination(@[ ELCWidth, ELCHeight ])
@@ -51,7 +51,7 @@
         .multipliers(@2);
   }];
     
-    [self.deactiveButton makeConstraints:^(ELConstraintsMaker *make) {
+    [self.deactiveButton updateOrMakeConstraints:^(ELConstraintsMaker *make) {
         make.ELCenterX.equalTo(@0);
         make.ELTop.equalTo(self.rollbackButton.ELBottom).offset(10);
         make.ELSize.equalTo(self.rollbackButton).multipliers(@[@1,@2]);
@@ -94,7 +94,7 @@
 }
 
 - (IBAction)updateAction:(id)sender {
-  [_testView updateConstraints:^(ELConstraintsMaker *make) {
+  [_testView updateOrMakeConstraints:^(ELConstraintsMaker *make) {
     make.ELSize.equalTo(self.view).offsets(@-10);
   }];
 
