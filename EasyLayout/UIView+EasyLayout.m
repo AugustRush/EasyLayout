@@ -10,6 +10,48 @@
 #import <objc/runtime.h>
 #import "ELLayoutConstraintModel.h"
 #import "ELLayoutCombinationConstraintModel.h"
+#import "ELConstraintsMaker+ELPrivate.h"
+
+@interface _ELConstraintsMakerManager : NSObject
+
+@property (nonatomic, weak) ELConstraintsMaker *portraitMaker;
+@property (nonatomic, weak) ELConstraintsMaker *landscapeMaker;
+
+@end
+
+@implementation _ELConstraintsMakerManager
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationWillChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - notification methods
+
+- (void)interfaceOrientationWillChanged:(NSNotification *)notification {
+    UIInterfaceOrientation orientation = [[notification.userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey] integerValue];
+    
+    if (self.portraitMaker == self.landscapeMaker) {
+        return;
+    }
+    
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
+        [self.landscapeMaker deactivateAllConstraints];
+        [self.portraitMaker activateAllConstraints];
+    } else {
+        [self.portraitMaker deactivateAllConstraints];
+        [self.landscapeMaker activateAllConstraints];
+    }
+}
+
+@end
 
 @implementation UIView (EasyLayout)
 
@@ -131,29 +173,77 @@
     return constraint;
 }
 
-- (ELConstraintsMaker *)ELMaker {
-    ELConstraintsMaker *maker = objc_getAssociatedObject(self, _cmd);
-    if (maker == nil) {
-        maker = [[ELConstraintsMaker alloc] initWithView:self];
-        objc_setAssociatedObject(self, _cmd, maker,
-                                 OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (_ELConstraintsMakerManager *)_makerManager {
+    _ELConstraintsMakerManager *manager = objc_getAssociatedObject(self, _cmd);
+    if (manager == nil) {
+        manager = [[_ELConstraintsMakerManager alloc] init];
+        objc_setAssociatedObject(self, _cmd, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
+    return manager;
+}
+
+const void *ELPortraitMakerKey = &ELPortraitMakerKey;
+const void *ELLandscapeMakerKey = &ELLandscapeMakerKey;
+const void *ELCommonMakerKey = &ELCommonMakerKey;
+
+- (ELConstraintsMaker *)ELMakerForOrientation:(ELInterfaceOritation)orientation {
+    
+    ELConstraintsMaker *maker = nil;
+    switch (orientation) {
+        case ELInterfaceOritationAll:
+            maker = objc_getAssociatedObject(self, ELCommonMakerKey);
+            if (maker == nil) {
+                maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
+                objc_setAssociatedObject(self, ELCommonMakerKey, maker,
+                                         OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                [self _makerManager].portraitMaker = maker;
+                [self _makerManager].landscapeMaker = maker;
+            }
+            break;
+        case ELInterfaceOritationLandscape:
+            maker = objc_getAssociatedObject(self, ELLandscapeMakerKey);
+            if (maker == nil) {
+                maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
+                objc_setAssociatedObject(self, ELLandscapeMakerKey, maker,
+                                         OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                [self _makerManager].landscapeMaker = maker;
+            }
+            break;
+        case ELInterfaceOritationPortrait:
+            maker = objc_getAssociatedObject(self, ELPortraitMakerKey);
+            if (maker == nil) {
+                maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
+                objc_setAssociatedObject(self, ELPortraitMakerKey, maker,
+                                         OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                [self _makerManager].portraitMaker = maker;
+            }
+            break;
+    }
+    
     return maker;
 }
 
 #pragma mark - public methods
 
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block {
+    [self remakeConstraints:block forOrientation:ELInterfaceOritationAll];
+}
+
+- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block {
+    [self updateOrMakeConstraints:block forOrientation:ELInterfaceOritationAll];
+}
+
+- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    ELConstraintsMaker *maker = [self ELMaker];
-    [maker removeAll];
+    ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
     block(maker);
     [maker update];
 }
 
-- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block {
+- (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    ELConstraintsMaker *maker = [self ELMaker];
+    ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
+    [maker removeAll];
     block(maker);
     [maker update];
 }

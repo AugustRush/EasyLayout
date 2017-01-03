@@ -14,7 +14,7 @@
 @interface ELConstraintsMaker : NSObject<ELLayoutAttributeProtocol>
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithView:(UIView *)view;
+- (instancetype)initWithView:(UIView *)view orientation:(ELInterfaceOritation)orientation;
 //
 - (void)removeAll;
 - (void)update;

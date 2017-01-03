@@ -9,6 +9,7 @@
 #import "ELConstraintsMaker.h"
 #import "UIView+EasyLayout.h"
 #import <objc/runtime.h>
+#import "ELConstraintsMaker+ELPrivate.h"
 
 @interface UIView (ELPrivate)
 
@@ -21,23 +22,25 @@
 @end
 
 @implementation ELConstraintsMaker {
-  __weak UIView *_view;
-  NSMutableSet<ELLayoutConstraintModel *> *_tempModels;
-  NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
-  NSHashTable<NSLayoutConstraint *> *_constraints;
+    __weak UIView *_view;
+    NSMutableSet<ELLayoutConstraintModel *> *_tempModels;
+    NSMutableDictionary<NSString *, ELLayoutConstraintModel *> *_models;
+    NSHashTable<NSLayoutConstraint *> *_constraints;
+    ELInterfaceOritation _orientation;
 }
 
 #pragma mark - life cycle methods
 
-- (instancetype)initWithView:(UIView *)view {
-  self = [super init];
-  if (self) {
-    _view = view;
-    _tempModels = [NSMutableSet set];
-    _models = @{}.mutableCopy;
-    _constraints = [NSHashTable weakObjectsHashTable];
-  }
-  return self;
+- (instancetype)initWithView:(UIView *)view orientation:(ELInterfaceOritation)orientation {
+    self = [super init];
+    if (self) {
+        _view = view;
+        _tempModels = [NSMutableSet set];
+        _models = @{}.mutableCopy;
+        _constraints = [NSHashTable weakObjectsHashTable];
+        _orientation = orientation;
+    }
+    return self;
 }
 
 #pragma mark - public methods
@@ -72,10 +75,11 @@
 
 - (void)installConstraintWithModel:(ELLayoutConstraintModel *)model
                         identifier:(NSString *)identifier {
-  NSLayoutConstraint *constraint = model.constraint();
-  [constraint setActive:YES];
-  _models[identifier] = model;
-  [_constraints addObject:constraint];
+    NSLayoutConstraint *constraint = model.constraint();
+    BOOL active = [self constraintsShouldBeActived];
+    [constraint setActive:active];
+    _models[identifier] = model;
+    [_constraints addObject:constraint];
 }
 
 #pragma mark - attributes
@@ -209,6 +213,32 @@
         [string appendFormat:@"%ld/", (long)model.toAttribute];
     }
     return string.copy;
+}
+
+- (ELInterfaceOritation)currentInterfaceOrientation {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        return ELInterfaceOritationPortrait;
+    }
+    return ELInterfaceOritationLandscape;
+}
+
+- (BOOL)constraintsShouldBeActived {
+    return ([self currentInterfaceOrientation] & _orientation);
+}
+
+- (void)activateAllConstraints {
+    for (ELLayoutConstraintModel *model in _models.allValues) {
+        NSLayoutConstraint *constraint = model.constraint();
+        constraint.active = YES;
+        [_constraints addObject:constraint];
+    }
+    
+}
+
+- (void)deactivateAllConstraints {
+    // deactived constraints
+    [NSLayoutConstraint deactivateConstraints:_constraints.allObjects];
 }
 
 @end

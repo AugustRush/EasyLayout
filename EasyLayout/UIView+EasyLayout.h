@@ -14,5 +14,8 @@
 
 - (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *make))block;
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *make))block;
+//
+- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation;
+- (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation;
 
 @end

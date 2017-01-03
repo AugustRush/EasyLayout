@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "EasyLayoutDefine.h"
 
+typedef NS_ENUM(NSUInteger, ELInterfaceOritation) {
+    ELInterfaceOritationPortrait = 1 << 0,
+    ELInterfaceOritationLandscape = 1 << 1,
+    ELInterfaceOritationAll = ELInterfaceOritationPortrait | ELInterfaceOritationLandscape,
+};
+
 @class ELLayoutConstraintModel;
 @class ELLayoutCombinationConstraintModel;
 @protocol ELLayoutAttributeProtocol <NSObject>
