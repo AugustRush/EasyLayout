@@ -14,6 +14,7 @@
 
 @interface _ELConstraintsMakerManager : NSObject
 
+@property (nonatomic, assign) BOOL hasDividedConstraints;
 @property (nonatomic, weak) ELConstraintsMaker *portraitMaker;
 @property (nonatomic, weak) ELConstraintsMaker *landscapeMaker;
 
@@ -24,6 +25,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        _hasDividedConstraints = NO;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationWillChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
     }
     return self;
@@ -38,7 +40,7 @@
 - (void)interfaceOrientationWillChanged:(NSNotification *)notification {
     UIInterfaceOrientation orientation = [[notification.userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey] integerValue];
     
-    if (self.portraitMaker == self.landscapeMaker) {
+    if (!_hasDividedConstraints) {
         return;
     }
     
@@ -236,6 +238,8 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
         [portraitMaker update];
         [landscapeMaker update];
     } else {
+        [self _makerManager].hasDividedConstraints = YES;
+        //
         ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
         block(maker);
         [maker update];
@@ -249,6 +253,8 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
         [manager.portraitMaker removeAll];
         [manager.landscapeMaker removeAll];
     } else {
+        [self _makerManager].hasDividedConstraints = YES;
+        //
         ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
         [maker removeAll];
     }
