@@ -95,50 +95,50 @@
         make.ELHeight.equalTo(@100);
         make.ELLeft.equalTo(@5);
         make.ELTop.equalTo(@5);
-    } forOrientation:ELInterfaceOritationAll];
+    } forOrientation:ELInterfaceOritationPortrait];
     
     
     [_aView remakeConstraints:^(ELConstraintsMaker *make) {
         make.ELLeft.equalTo(_testView.ELRight).offset(5);
         make.combination(@[ ELCTop, ELCWidth, ELCHeight ]).equalTo(_testView);
-    } forOrientation:ELInterfaceOritationAll];
+    } forOrientation:ELInterfaceOritationPortrait];
     
     [_bview remakeConstraints:^(ELConstraintsMaker *make) {
         make.ELLeft.equalTo(_testView);
         make.ELTop.equalTo(_testView.ELBottom).offset(5);
         make.ELSize.equalTo(_testView);
-    } forOrientation:ELInterfaceOritationAll];
+    } forOrientation:ELInterfaceOritationPortrait];
     
     [_cView remakeConstraints:^(ELConstraintsMaker *make) {
         make.combination(@[ ELCLeft, ELCTop ])
         .equalTo(@[ _bview.ELRight, _aView.ELBottom ])
         .offsets(@[ @5, @5 ]);
         make.ELSize.equalTo(_testView);
-    } forOrientation:ELInterfaceOritationAll];
+    } forOrientation:ELInterfaceOritationPortrait];
     
     //// landscape
     
-//    [_testView remakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELWidth.equalTo(self.view).offset(-10);
-//        make.ELHeight.equalTo(@150);
-//        make.ELLeft.equalTo(@5);
-//        make.ELTop.equalTo(@5);
-//    } forOrientation:ELInterfaceOritationLandscape];
-//    
-//    [_aView remakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELSize.equalTo(_testView).offsets(@[@-10,@-10]);
-//        make.ELCenter.equalTo(_testView);
-//    } forOrientation:ELInterfaceOritationLandscape];
-//    
-//    [_bview remakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELSize.equalTo(_aView).offsets(@[@-10,@-10]);
-//        make.ELCenter.equalTo(_aView);
-//    } forOrientation:ELInterfaceOritationLandscape];
-//    
-//    [_cView remakeConstraints:^(ELConstraintsMaker *make) {
-//        make.ELSize.equalTo(_bview).offsets(@[@-10,@-10]);
-//        make.ELCenter.equalTo(_bview);
-//    } forOrientation:ELInterfaceOritationLandscape];
+    [_testView remakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELWidth.equalTo(self.view).offset(-10);
+        make.ELHeight.equalTo(@150);
+        make.ELLeft.equalTo(@5);
+        make.ELTop.equalTo(@5);
+    } forOrientation:ELInterfaceOritationLandscape];
+    
+    [_aView remakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELSize.equalTo(_testView).offsets(@[@-10,@-10]);
+        make.ELCenter.equalTo(_testView);
+    } forOrientation:ELInterfaceOritationLandscape];
+    
+    [_bview remakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELSize.equalTo(_aView).offsets(@[@-10,@-10]);
+        make.ELCenter.equalTo(_aView);
+    } forOrientation:ELInterfaceOritationLandscape];
+    
+    [_cView remakeConstraints:^(ELConstraintsMaker *make) {
+        make.ELSize.equalTo(_bview).offsets(@[@-10,@-10]);
+        make.ELCenter.equalTo(_bview);
+    } forOrientation:ELInterfaceOritationLandscape];
 
 }
 
