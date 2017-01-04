@@ -14,44 +14,14 @@
 
 @interface _ELConstraintsMakerManager : NSObject
 
-@property (nonatomic, weak) ELConstraintsMaker *portraitMaker;
-@property (nonatomic, weak) ELConstraintsMaker *landscapeMaker;
+@property (nonatomic, assign) BOOL hasDividedConstraints;
+@property (nonatomic, weak) UIView *view;
+
+- (ELConstraintsMaker *)portraitMaker;
+- (ELConstraintsMaker *)landscapeMaker;
 
 @end
 
-@implementation _ELConstraintsMakerManager
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationWillChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - notification methods
-
-- (void)interfaceOrientationWillChanged:(NSNotification *)notification {
-    UIInterfaceOrientation orientation = [[notification.userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey] integerValue];
-    
-    if (self.portraitMaker == self.landscapeMaker) {
-        return;
-    }
-    
-    if (UIInterfaceOrientationIsPortrait(orientation)) {
-        [self.landscapeMaker deactivateAllConstraints];
-        [self.portraitMaker activateAllConstraints];
-    } else {
-        [self.portraitMaker deactivateAllConstraints];
-        [self.landscapeMaker activateAllConstraints];
-    }
-}
-
-@end
 
 @implementation UIView (EasyLayout)
 
@@ -177,6 +147,7 @@
     _ELConstraintsMakerManager *manager = objc_getAssociatedObject(self, _cmd);
     if (manager == nil) {
         manager = [[_ELConstraintsMakerManager alloc] init];
+        manager.view = self;
         objc_setAssociatedObject(self, _cmd, manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return manager;
@@ -184,7 +155,6 @@
 
 const void *ELPortraitMakerKey = &ELPortraitMakerKey;
 const void *ELLandscapeMakerKey = &ELLandscapeMakerKey;
-const void *ELCommonMakerKey = &ELCommonMakerKey;
 
 - (ELConstraintsMaker *)ELMakerForOrientation:(ELInterfaceOritation)orientation {
     
@@ -199,7 +169,6 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
                 maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
                 objc_setAssociatedObject(self, ELLandscapeMakerKey, maker,
                                          OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                [self _makerManager].landscapeMaker = maker;
             }
             break;
         case ELInterfaceOritationPortrait:
@@ -208,7 +177,6 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
                 maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
                 objc_setAssociatedObject(self, ELPortraitMakerKey, maker,
                                          OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                [self _makerManager].portraitMaker = maker;
             }
             break;
     }
@@ -228,14 +196,19 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
 
 - (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    _ELConstraintsMakerManager *manager = [self _makerManager];
     if (orientation == ELInterfaceOritationAll) {
-        ELConstraintsMaker *portraitMaker = [self ELMakerForOrientation:ELInterfaceOritationPortrait];
-        ELConstraintsMaker *landscapeMaker = [self ELMakerForOrientation:ELInterfaceOritationLandscape];
+        ELConstraintsMaker *portraitMaker = manager.portraitMaker;
+        ELConstraintsMaker *landscapeMaker = manager.landscapeMaker;
+        //
         block(portraitMaker);
         block(landscapeMaker);
+        //
         [portraitMaker update];
         [landscapeMaker update];
     } else {
+        manager.hasDividedConstraints = YES;
+        //
         ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
         block(maker);
         [maker update];
@@ -244,17 +217,74 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
 
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    _ELConstraintsMakerManager *manager = [self _makerManager];
     if (orientation == ELInterfaceOritationAll) {
-        _ELConstraintsMakerManager *manager = [self _makerManager];
-        [manager.portraitMaker removeAll];
-        [manager.landscapeMaker removeAll];
+        ELConstraintsMaker *portraitMaker = manager.portraitMaker;
+        ELConstraintsMaker *landscapeMaker = manager.landscapeMaker;
+        //
+        [portraitMaker removeAll];
+        [landscapeMaker removeAll];
+        //
+        block(portraitMaker);
+        block(landscapeMaker);
+        //
+        [portraitMaker update];
+        [landscapeMaker update];
     } else {
+        manager.hasDividedConstraints = YES;
+        //
         ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
         [maker removeAll];
+        block(maker);
+        [maker update];
     }
-    ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
-    block(maker);
-    [maker update];
+}
+
+@end
+
+@implementation _ELConstraintsMakerManager
+
+#pragma mark - life cycle methods
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _hasDividedConstraints = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceOrientationWillChanged:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - private methods
+
+- (ELConstraintsMaker *)portraitMaker {
+    return [_view ELMakerForOrientation:ELInterfaceOritationPortrait];
+}
+
+- (ELConstraintsMaker *)landscapeMaker {
+    return [_view ELMakerForOrientation:ELInterfaceOritationLandscape];
+}
+
+#pragma mark - notification methods
+
+- (void)interfaceOrientationWillChanged:(NSNotification *)notification {
+    UIInterfaceOrientation orientation = [[notification.userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey] integerValue];
+    
+    if (!_hasDividedConstraints) {
+        return;
+    }
+    
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
+        [self.landscapeMaker deactivateAllConstraints];
+        [self.portraitMaker activateAllConstraints];
+    } else {
+        [self.portraitMaker deactivateAllConstraints];
+        [self.landscapeMaker activateAllConstraints];
+    }
 }
 
 @end
