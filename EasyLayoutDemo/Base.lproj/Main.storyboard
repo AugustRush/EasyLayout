@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -10,33 +14,33 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="ovt-Mg-c6l">
                                 <rect key="frame" x="9" y="26" width="98" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.47185782479999999" blue="0.56504028569999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="5a4-IT-QJE">
-                                <rect key="frame" x="20" y="150" width="98" height="111"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.39962297997021123" green="0.46516152954939005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="Kwp-7S-K0i">
-                                <rect key="frame" x="144" y="144" width="98" height="111"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.23350542880053993" blue="0.60924332528337555" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.47185782479999999" blue="0.56504028569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="CFw-qt-LmA">
                                 <rect key="frame" x="144" y="20" width="98" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.73987202007218755" green="1" blue="0.48062173295977606" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.73987202007218755" green="1" blue="0.48062173295977606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="5a4-IT-QJE">
+                                <rect key="frame" x="20" y="150" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.39962297997021123" green="0.46516152954939005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Kwp-7S-K0i">
+                                <rect key="frame" x="144" y="144" width="98" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.23350542880053993" blue="0.60924332528337555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XEd-3r-6uZ">
                                 <rect key="frame" x="95" y="269" width="131" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.57831778992197602" green="1" blue="0.46677104063908059" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.57831778992197602" green="1" blue="0.46677104063908059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="remake constraints"/>
                                 <connections>
                                     <action selector="remakeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lXR-oS-ATp"/>
@@ -45,7 +49,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Lbf-Rf-N91">
                                 <rect key="frame" x="96" y="327" width="129" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.21667318796923563" blue="0.1895688851651679" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.21667318796923563" blue="0.1895688851651679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="update constraints"/>
                                 <connections>
                                     <action selector="updateAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TmX-8p-Jcx"/>
@@ -54,7 +58,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fyD-7d-nDT">
                                 <rect key="frame" x="109" y="393" width="103" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.40032753694181833" green="1" blue="0.93601479668414544" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.40032753694181833" green="1" blue="0.93601479668414544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="rollback to first"/>
                                 <connections>
                                     <action selector="rollbackToFirst:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N78-78-0mg"/>
@@ -63,14 +67,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4to-Wv-0By">
                                 <rect key="frame" x="129" y="439" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93632190239463808" green="0.12854005563236759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.93632190239463808" green="0.12854005563236759" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="deactive "/>
                                 <connections>
                                     <action selector="deactiveAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4vy-ca-kkY"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="aView" destination="CFw-qt-LmA" id="YsF-iq-cHy"/>
@@ -88,4 +92,9 @@
             <point key="canvasLocation" x="290" y="233"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

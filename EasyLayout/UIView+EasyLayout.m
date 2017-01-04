@@ -191,14 +191,7 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
     ELConstraintsMaker *maker = nil;
     switch (orientation) {
         case ELInterfaceOritationAll:
-            maker = objc_getAssociatedObject(self, ELCommonMakerKey);
-            if (maker == nil) {
-                maker = [[ELConstraintsMaker alloc] initWithView:self orientation:orientation];
-                objc_setAssociatedObject(self, ELCommonMakerKey, maker,
-                                         OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                [self _makerManager].portraitMaker = maker;
-                [self _makerManager].landscapeMaker = maker;
-            }
+            NSAssert(0, @"should not be called!");
             break;
         case ELInterfaceOritationLandscape:
             maker = objc_getAssociatedObject(self, ELLandscapeMakerKey);
@@ -235,16 +228,26 @@ const void *ELCommonMakerKey = &ELCommonMakerKey;
 
 - (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
-    ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
-    block(maker);
-    [maker update];
+    if (orientation == ELInterfaceOritationAll) {
+        ELConstraintsMaker *portraitMaker = [self ELMakerForOrientation:ELInterfaceOritationPortrait];
+        ELConstraintsMaker *landscapeMaker = [self ELMakerForOrientation:ELInterfaceOritationLandscape];
+        block(portraitMaker);
+        block(landscapeMaker);
+        [portraitMaker update];
+        [landscapeMaker update];
+    } else {
+        ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
+        block(maker);
+        [maker update];
+    }
 }
 
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation {
     self.translatesAutoresizingMaskIntoConstraints = NO;
     if (orientation == ELInterfaceOritationAll) {
-        [[self _makerManager].portraitMaker removeAll];
-        [[self _makerManager].landscapeMaker removeAll];
+        _ELConstraintsMakerManager *manager = [self _makerManager];
+        [manager.portraitMaker removeAll];
+        [manager.landscapeMaker removeAll];
     } else {
         ELConstraintsMaker *maker = [self ELMakerForOrientation:orientation];
         [maker removeAll];
