@@ -32,6 +32,8 @@
 #define ELCCenterYWithMargin @(NSLayoutAttributeCenterYWithinMargins)
 #define ELCNotAttribute @(NSLayoutAttributeNotAnAttribute)
 
+#define ELUNAVALIBLE(description) __attribute__((unavailable(description)))
+
 // NS_INLINE __attribute__((overloadable)) NSLayoutConstraint *
 // ELLayout(ELLayoutConstraintModel *constraint1, ELLayoutConstraintModel
 // *constraint2,

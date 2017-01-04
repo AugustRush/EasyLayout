@@ -19,3 +19,10 @@
 - (void)remakeConstraints:(void (^)(ELConstraintsMaker *))block forOrientation:(ELInterfaceOritation)orientation;
 
 @end
+
+
+@interface UIView (Unavalible)
+
+- (void)makeConstraints:(void (^)(ELConstraintsMaker *make))block ELUNAVALIBLE("Please use '- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *make))block' replaced ! ");
+- (void)updateConstraints:(void (^)(ELConstraintsMaker *make))block ELUNAVALIBLE("Please use '- (void)updateOrMakeConstraints:(void (^)(ELConstraintsMaker *make))block' replaced ! ");
+@end
